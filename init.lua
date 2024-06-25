@@ -116,6 +116,8 @@ vim.o.conceallevel = 1
 -- vim.o.relativenumber = true
 >>>>>>> c92ea7c (Replace vim.opt with vim.o (#1495))
 
+vim.opt.tabstop = 4 -- Always 4 (see :h tabstop)
+
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
 
@@ -1241,6 +1243,7 @@ require('lazy').setup({
       local servers = {
         -- clangd = {},
 <<<<<<< HEAD
+<<<<<<< HEAD
         gopls = {},
         pyright = {},
 ||||||| parent of 80273dc (added some customizations)
@@ -1248,6 +1251,11 @@ require('lazy').setup({
         -- pyright = {},
 =======
         -- gopls = {},
+||||||| parent of 1374458 (my custom config)
+        -- gopls = {},
+=======
+        gopls = {},
+>>>>>>> 1374458 (my custom config)
         pyright = {},
 >>>>>>> 80273dc (added some customizations)
         -- rust_analyzer = {},
@@ -1383,6 +1391,7 @@ require('lazy').setup({
 =======
 >>>>>>> b9f3965 (Clean up the lua_ls config)
         -- You can add other tools here that you want Mason to install
+<<<<<<< HEAD
         'stylua', -- Used to format Lua code
 <<<<<<< HEAD
         'templ', -- Used to work with html templates
@@ -1391,6 +1400,11 @@ require('lazy').setup({
 =======
         -- You can add other tools here that you want Mason to install
 >>>>>>> ad246eb (fix: remove mason-lspconfig, we do not need it anymore)
+||||||| parent of 1374458 (my custom config)
+=======
+        'templ', -- Used to work with html templates
+        'terraform-ls',
+>>>>>>> 1374458 (my custom config)
       })
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }

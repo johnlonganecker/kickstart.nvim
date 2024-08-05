@@ -116,7 +116,7 @@ vim.o.conceallevel = 1
 -- vim.o.relativenumber = true
 >>>>>>> c92ea7c (Replace vim.opt with vim.o (#1495))
 
-vim.opt.tabstop = 4 -- Always 4 (see :h tabstop)
+-- vim.opt.tabstop = 4 -- Always 4 (see :h tabstop)
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
@@ -356,6 +356,17 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 >>>>>>> 7e54a4c (fix: trimming down config and updating stylua)
 })
 
+-- https://stackoverflow.com/questions/75463635/migrating-filetype-autocmd-setting-from-vimscript-to-lua
+-- local generalSettingsGroup = vim.api.nvim_create_augroup('General settings', { clear = true })
+--
+-- vim.api.nvim_create_autocmd('FileType', {
+--   pattern = { 'dbout' },
+--   callback = function()
+--     vim.opt.foldmethod = 'nofoldenable'
+--   end,
+--   group = generalSettingsGroup,
+-- })
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -488,10 +499,18 @@ require('lazy').setup({
     },
   },
 
+<<<<<<< HEAD
   -- { 'tpope/vim-dadbod', opts = {} },
   -- { 'kristijanhusak/vim-dadbod-completion', opts = {}, config = function() end },
   -- { 'kristijanhusak/vim-dadbod-ui', opts = {} },
 
+||||||| parent of f62b142 (got dad bod working)
+=======
+  { 'tpope/vim-dadbod', opts = {} },
+  { 'kristijanhusak/vim-dadbod-completion', opts = {}, config = function() end },
+  { 'kristijanhusak/vim-dadbod-ui', opts = {} },
+
+>>>>>>> f62b142 (got dad bod working)
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
   -- This is often very useful to both group configuration, as well as handle
@@ -1245,12 +1264,18 @@ require('lazy').setup({
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ||||||| parent of 8b8032d (fix merge conflict)
 =======
 <<<<<<< HEAD
 >>>>>>> 8b8032d (fix merge conflict)
+||||||| parent of f62b142 (got dad bod working)
+<<<<<<< HEAD
+=======
+>>>>>>> f62b142 (got dad bod working)
         gopls = {},
         pyright = {},
+<<<<<<< HEAD
 <<<<<<< HEAD
 ||||||| parent of 80273dc (added some customizations)
         -- gopls = {},
@@ -1274,6 +1299,16 @@ require('lazy').setup({
         pyright = {},
 >>>>>>> 5735060 (added some customizations)
 >>>>>>> 8b8032d (fix merge conflict)
+||||||| parent of f62b142 (got dad bod working)
+||||||| parent of 5735060 (added some customizations)
+        -- gopls = {},
+        -- pyright = {},
+=======
+        -- gopls = {},
+        pyright = {},
+>>>>>>> 5735060 (added some customizations)
+=======
+>>>>>>> f62b142 (got dad bod working)
         -- rust_analyzer = {},
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -1813,6 +1848,7 @@ require('lazy').setup({
       snippets = { preset = 'luasnip' },
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       -- Blink.cmp includes an optional, recommended rust fuzzy matcher,
       -- which automatically downloads a prebuilt binary when enabled.
       --
@@ -1921,6 +1957,10 @@ require('lazy').setup({
 
       snippets = { preset = 'luasnip' },
 
+||||||| parent of f62b142 (got dad bod working)
+=======
+<<<<<<< HEAD
+>>>>>>> f62b142 (got dad bod working)
       -- Blink.cmp includes an optional, recommended rust fuzzy matcher,
       -- which automatically downloads a prebuilt binary when enabled.
       --
@@ -1933,7 +1973,36 @@ require('lazy').setup({
       -- Shows a signature help window while you type arguments for a function
       signature = { enabled = true },
     },
+<<<<<<< HEAD
 >>>>>>> d350db2 (feat: switch nvim-cmp for blink.cmp (#1426))
+||||||| parent of f62b142 (got dad bod working)
+=======
+||||||| parent of 428a7de (got dad bod working)
+          -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
+          --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
+        },
+        sources = {
+          { name = 'nvim_lsp' },
+          { name = 'luasnip' },
+          { name = 'path' },
+        },
+      }
+    end,
+=======
+          -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
+          --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
+        },
+        sources = {
+          { name = 'nvim_lsp' },
+          { name = 'luasnip' },
+          { name = 'path' },
+          { name = 'vim-dadbod-completion' },
+          -- { name = 'buffers' },
+        },
+      }
+    end,
+>>>>>>> 428a7de (got dad bod working)
+>>>>>>> f62b142 (got dad bod working)
   },
 
   { -- You can easily change to a different colorscheme.
@@ -2233,8 +2302,19 @@ require('lazy').setup({
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 =======
   -- require 'kickstart.plugins.neo-tree',
+<<<<<<< HEAD
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommended keymaps
+<<<<<<< HEAD
 >>>>>>> 886f2bc (Clarify gitsigns keymap for which-key)
+||||||| parent of f62b142 (got dad bod working)
+=======
+||||||| parent of 428a7de (got dad bod working)
+  -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+=======
+  require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+  require 'kickstart.plugins.dadbod-ui',
+>>>>>>> 428a7de (got dad bod working)
+>>>>>>> f62b142 (got dad bod working)
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.

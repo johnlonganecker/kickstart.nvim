@@ -104,7 +104,7 @@ vim.opt.number = true
 --  Experiment for yourself to see if you like it!
 -- vim.opt.relativenumber = true
 
-vim.opt.tabstop = 4 -- Always 4 (see :h tabstop)
+-- vim.opt.tabstop = 4 -- Always 4 (see :h tabstop)
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
@@ -208,6 +208,17 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- https://stackoverflow.com/questions/75463635/migrating-filetype-autocmd-setting-from-vimscript-to-lua
+-- local generalSettingsGroup = vim.api.nvim_create_augroup('General settings', { clear = true })
+--
+-- vim.api.nvim_create_autocmd('FileType', {
+--   pattern = { 'dbout' },
+--   callback = function()
+--     vim.opt.foldmethod = 'nofoldenable'
+--   end,
+--   group = generalSettingsGroup,
+-- })
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -264,6 +275,10 @@ require('lazy').setup({
       },
     },
   },
+
+  { 'tpope/vim-dadbod', opts = {} },
+  { 'kristijanhusak/vim-dadbod-completion', opts = {}, config = function() end },
+  { 'kristijanhusak/vim-dadbod-ui', opts = {} },
 
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
@@ -781,6 +796,8 @@ require('lazy').setup({
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
+          { name = 'vim-dadbod-completion' },
+          -- { name = 'buffers' },
         },
       }
     end,
@@ -891,7 +908,8 @@ require('lazy').setup({
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.neo-tree',
-  -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+  require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+  require 'kickstart.plugins.dadbod-ui',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.

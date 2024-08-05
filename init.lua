@@ -90,7 +90,7 @@ P.S. You can delete this when you're done too. It's your config now! :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- Set to true if you have a Nerd Font installed
+-- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
@@ -569,8 +569,16 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         -- clangd = {},
+<<<<<<< HEAD
         gopls = {},
         pyright = {},
+||||||| parent of 5735060 (added some customizations)
+        -- gopls = {},
+        -- pyright = {},
+=======
+        -- gopls = {},
+        pyright = {},
+>>>>>>> 5735060 (added some customizations)
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --

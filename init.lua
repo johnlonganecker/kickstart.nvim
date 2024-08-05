@@ -1244,8 +1244,14 @@ require('lazy').setup({
         -- clangd = {},
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+||||||| parent of 8b8032d (fix merge conflict)
+=======
+<<<<<<< HEAD
+>>>>>>> 8b8032d (fix merge conflict)
         gopls = {},
         pyright = {},
+<<<<<<< HEAD
 ||||||| parent of 80273dc (added some customizations)
         -- gopls = {},
         -- pyright = {},
@@ -1258,6 +1264,16 @@ require('lazy').setup({
 >>>>>>> 1374458 (my custom config)
         pyright = {},
 >>>>>>> 80273dc (added some customizations)
+||||||| parent of 8b8032d (fix merge conflict)
+=======
+||||||| parent of 5735060 (added some customizations)
+        -- gopls = {},
+        -- pyright = {},
+=======
+        -- gopls = {},
+        pyright = {},
+>>>>>>> 5735060 (added some customizations)
+>>>>>>> 8b8032d (fix merge conflict)
         -- rust_analyzer = {},
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:

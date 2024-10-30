@@ -1849,6 +1849,11 @@ require('lazy').setup({
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+||||||| parent of 029b870 (samarth-nagar fix: lazy help tag on line 931 (#1167))
+<<<<<<< HEAD
+=======
+>>>>>>> 029b870 (samarth-nagar fix: lazy help tag on line 931 (#1167))
       -- Blink.cmp includes an optional, recommended rust fuzzy matcher,
       -- which automatically downloads a prebuilt binary when enabled.
       --
@@ -1861,6 +1866,7 @@ require('lazy').setup({
       -- Shows a signature help window while you type arguments for a function
       signature = { enabled = true },
     },
+<<<<<<< HEAD
 ||||||| parent of 282cbb9 (feat: add basic function signature help (#1358))
           -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
           --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
@@ -2003,6 +2009,34 @@ require('lazy').setup({
     end,
 >>>>>>> 428a7de (got dad bod working)
 >>>>>>> f62b142 (got dad bod working)
+||||||| parent of 029b870 (samarth-nagar fix: lazy help tag on line 931 (#1167))
+||||||| parent of 428a7de (got dad bod working)
+          -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
+          --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
+        },
+        sources = {
+          { name = 'nvim_lsp' },
+          { name = 'luasnip' },
+          { name = 'path' },
+        },
+      }
+    end,
+=======
+          -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
+          --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
+        },
+        sources = {
+          { name = 'nvim_lsp' },
+          { name = 'luasnip' },
+          { name = 'path' },
+          { name = 'vim-dadbod-completion' },
+          -- { name = 'buffers' },
+        },
+      }
+    end,
+>>>>>>> 428a7de (got dad bod working)
+=======
+>>>>>>> 029b870 (samarth-nagar fix: lazy help tag on line 931 (#1167))
   },
 
   { -- You can easily change to a different colorscheme.
@@ -2303,6 +2337,7 @@ require('lazy').setup({
 =======
   -- require 'kickstart.plugins.neo-tree',
 <<<<<<< HEAD
+<<<<<<< HEAD
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommended keymaps
 <<<<<<< HEAD
 >>>>>>> 886f2bc (Clarify gitsigns keymap for which-key)
@@ -2311,10 +2346,23 @@ require('lazy').setup({
 ||||||| parent of 428a7de (got dad bod working)
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 =======
+||||||| parent of 029b870 (samarth-nagar fix: lazy help tag on line 931 (#1167))
+<<<<<<< HEAD
+  -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommended keymaps
+||||||| parent of 428a7de (got dad bod working)
+  -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+=======
+=======
+>>>>>>> 029b870 (samarth-nagar fix: lazy help tag on line 931 (#1167))
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
   require 'kickstart.plugins.dadbod-ui',
+<<<<<<< HEAD
 >>>>>>> 428a7de (got dad bod working)
 >>>>>>> f62b142 (got dad bod working)
+||||||| parent of 029b870 (samarth-nagar fix: lazy help tag on line 931 (#1167))
+>>>>>>> 428a7de (got dad bod working)
+=======
+>>>>>>> 029b870 (samarth-nagar fix: lazy help tag on line 931 (#1167))
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
@@ -2339,6 +2387,11 @@ require('lazy').setup({
 =======
   --  For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
   { import = 'custom.plugins' },
+  --
+  -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
+  -- Or use telescope!
+  -- In normal mode type `<space>sh` then write `lazy.nvim-plugin`
+  -- you can continue same window with `<space>sr` which resumes last telescope search
 }, {
 >>>>>>> 80273dc (added some customizations)
   ui = {

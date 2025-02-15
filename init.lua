@@ -278,6 +278,27 @@ require('lazy').setup({
   --        end,
   --    }
   --
+<<<<<<< HEAD
+||||||| parent of 71ad926 (docs: clarify using opts = {} vs config = function() ... require('plu… (#1316))
+  -- Use `opts = {}` to force a plugin to be loaded.
+  --
+
+=======
+  -- Use `opts = {}` to automatically pass options to a plugin's `setup()` function, forcing the plugin to be loaded.
+  --
+
+  -- Alternatively, use `config = function() ... end` for full control over the configuration.
+  -- If you prefer to call `setup` explicitly, use:
+  --    {
+  --        'lewis6991/gitsigns.nvim',
+  --        config = function()
+  --            require('gitsigns').setup({
+  --                -- Your gitsigns configuration here
+  --            })
+  --        end,
+  --    }
+  --
+>>>>>>> 71ad926 (docs: clarify using opts = {} vs config = function() ... require('plu… (#1316))
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`.
   --

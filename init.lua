@@ -626,7 +626,13 @@ require('lazy').setup({
           --
           -- When you move your cursor, the highlights will be cleared (the second autocommand).
           local client = vim.lsp.get_client_by_id(event.data.client_id)
+<<<<<<< HEAD
           if client and client:supports_method('textDocument/documentHighlight', event.buf) then
+||||||| parent of db78c0b (fix: arguments for the `vim.lsp.Client.supports_method` method (#1356))
+          if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+=======
+          if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+>>>>>>> db78c0b (fix: arguments for the `vim.lsp.Client.supports_method` method (#1356))
             local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
               buffer = event.buf,
@@ -653,8 +659,20 @@ require('lazy').setup({
           -- code, if the language server you are using supports them
           --
           -- This may be unwanted, since they displace some of your code
+<<<<<<< HEAD
           if client and client:supports_method('textDocument/inlayHint', event.buf) then
             map('<leader>th', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf }) end, '[T]oggle Inlay [H]ints')
+||||||| parent of db78c0b (fix: arguments for the `vim.lsp.Client.supports_method` method (#1356))
+          if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+            map('<leader>th', function()
+              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
+            end, '[T]oggle Inlay [H]ints')
+=======
+          if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+            map('<leader>th', function()
+              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
+            end, '[T]oggle Inlay [H]ints')
+>>>>>>> db78c0b (fix: arguments for the `vim.lsp.Client.supports_method` method (#1356))
           end
         end,
       })

@@ -888,6 +888,26 @@ require('lazy').setup({
         },
         opts = {},
       },
+<<<<<<< HEAD
+||||||| parent of 282cbb9 (feat: add basic function signature help (#1358))
+      'saadparwaiz1/cmp_luasnip',
+
+      -- Adds other completion capabilities.
+      --  nvim-cmp does not ship with all sources by default. They are split
+      --  into multiple repos for maintenance purposes.
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-path',
+=======
+      'saadparwaiz1/cmp_luasnip',
+
+      -- Adds other completion capabilities.
+      --  nvim-cmp does not ship with all sources by default. They are split
+      --  into multiple repos for maintenance purposes.
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-path',
+      'htsh7th/cmp-nvim-lsp-signature-help',
+>>>>>>> 282cbb9 (feat: add basic function signature help (#1358))
     },
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
@@ -938,6 +958,7 @@ require('lazy').setup({
 
       snippets = { preset = 'luasnip' },
 
+<<<<<<< HEAD
       -- Blink.cmp includes an optional, recommended rust fuzzy matcher,
       -- which automatically downloads a prebuilt binary when enabled.
       --
@@ -950,6 +971,40 @@ require('lazy').setup({
       -- Shows a signature help window while you type arguments for a function
       signature = { enabled = true },
     },
+||||||| parent of 282cbb9 (feat: add basic function signature help (#1358))
+          -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
+          --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
+        },
+        sources = {
+          {
+            name = 'lazydev',
+            -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
+            group_index = 0,
+          },
+          { name = 'nvim_lsp' },
+          { name = 'luasnip' },
+          { name = 'path' },
+        },
+      }
+    end,
+=======
+          -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
+          --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
+        },
+        sources = {
+          {
+            name = 'lazydev',
+            -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
+            group_index = 0,
+          },
+          { name = 'nvim_lsp' },
+          { name = 'luasnip' },
+          { name = 'path' },
+          { name = 'nvim_lsp_signature_help' },
+        },
+      }
+    end,
+>>>>>>> 282cbb9 (feat: add basic function signature help (#1358))
   },
 
   { -- You can easily change to a different colorscheme.

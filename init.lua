@@ -930,6 +930,7 @@ require('lazy').setup({
       --  into multiple repos for maintenance purposes.
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
+<<<<<<< HEAD
       'hrsh7th/cmp-path',
 <<<<<<< HEAD
       'htsh7th/cmp-nvim-lsp-signature-help',
@@ -937,6 +938,10 @@ require('lazy').setup({
 ||||||| parent of 7c49ba1 (Fix: fix the cmp-nvim-lsp-signature-help link (#1363))
       'htsh7th/cmp-nvim-lsp-signature-help',
 =======
+||||||| parent of ea60b2b (Remove duplicate cmp-path (#1369))
+      'hrsh7th/cmp-path',
+=======
+>>>>>>> ea60b2b (Remove duplicate cmp-path (#1369))
       'hrsh7th/cmp-nvim-lsp-signature-help',
 >>>>>>> 7c49ba1 (Fix: fix the cmp-nvim-lsp-signature-help link (#1363))
     },

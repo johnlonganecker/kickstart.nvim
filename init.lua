@@ -1692,6 +1692,7 @@ require('lazy').setup({
       formatters_by_ft = {
 <<<<<<< HEAD
         -- rust = { 'rustfmt' },
+<<<<<<< HEAD
         lua = { 'stylua' },
         go = { 'gofmt' },
 ||||||| parent of 459b868 (Use stylua as an lsp formatter instead of an external formatter)
@@ -1699,6 +1700,11 @@ require('lazy').setup({
 =======
         -- rust = { 'rustfmt' },
 >>>>>>> 459b868 (Use stylua as an lsp formatter instead of an external formatter)
+||||||| parent of 8137a41 (update with some neovim go debugging and a git blame shortcut)
+=======
+        lua = { 'stylua' },
+        go = { 'gofmt' },
+>>>>>>> 8137a41 (update with some neovim go debugging and a git blame shortcut)
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --

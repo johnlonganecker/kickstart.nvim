@@ -19,12 +19,16 @@ return {
   opts = {
     workspaces = {
       {
-        name = 'personal',
-        path = '~/vaults/personal',
+        name = 'datastruct-algo',
+        path = '~/projects/obsidian/datastruct-algo',
       },
       {
-        name = 'work',
-        path = '~/vaults/work',
+        name = 'golang',
+        path = '~/projects/obsidian/golang',
+      },
+      {
+        name = 'chirfon',
+        path = '~/projects/obsidian/chirfon',
       },
     },
   },

@@ -118,6 +118,8 @@ vim.o.conceallevel = 1
 
 -- vim.opt.tabstop = 4 -- Always 4 (see :h tabstop)
 
+vim.opt.conceallevel = 1
+
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
 

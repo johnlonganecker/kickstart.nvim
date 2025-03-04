@@ -30,6 +30,10 @@ return {
         name = 'chirfon',
         path = '~/projects/obsidian/chirfon',
       },
+      {
+        name = 'tech',
+        path = '~/projects/obsidian/tech',
+      },
     },
   },
 }

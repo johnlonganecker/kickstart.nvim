@@ -104,7 +104,7 @@ vim.opt.number = true
 --  Experiment for yourself to see if you like it!
 -- vim.opt.relativenumber = true
 
--- vim.opt.tabstop = 4 -- Always 4 (see :h tabstop)
+vim.opt.tabstop = 4 -- Always 4 (see :h tabstop)
 
 vim.opt.conceallevel = 1
 

@@ -116,7 +116,7 @@ vim.o.conceallevel = 1
 -- vim.o.relativenumber = true
 >>>>>>> c92ea7c (Replace vim.opt with vim.o (#1495))
 
--- vim.opt.tabstop = 4 -- Always 4 (see :h tabstop)
+vim.opt.tabstop = 4 -- Always 4 (see :h tabstop)
 
 vim.opt.conceallevel = 1
 

@@ -195,6 +195,9 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 vim.keymap.set('n', ',nt', '<Cmd>Neotree toggle<CR>', { desc = 'Toggle Neotree pane' })
 
+vim.keymap.set('n', '<leader>en', vim.diagnostic.goto_next, { desc = '[e]rror [n]ext' })
+vim.keymap.set('n', '<leader>ep', vim.diagnostic.goto_prev, { desc = '[e]rror [p]revious' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 

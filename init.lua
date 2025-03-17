@@ -314,6 +314,7 @@ vim.keymap.set('n', ',nt', '<Cmd>Neotree toggle<CR>', { desc = 'Toggle Neotree p
 vim.keymap.set('n', '<leader>en', vim.diagnostic.goto_next, { desc = '[e]rror [n]ext' })
 vim.keymap.set('n', '<leader>ep', vim.diagnostic.goto_prev, { desc = '[e]rror [p]revious' })
 
+<<<<<<< HEAD
 ||||||| parent of e947649 (feat(keymap): move windows without `<C-w>` (#1368))
 =======
 -- NOTE: Some terminals have coliding keymaps or are not able to send distinct keycodes
@@ -328,6 +329,12 @@ vim.keymap.set('n', '<leader>ep', vim.diagnostic.goto_prev, { desc = '[e]rror [p
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
 
 >>>>>>> e947649 (feat(keymap): move windows without `<C-w>` (#1368))
+||||||| parent of a668302 (more helpful keymaps)
+=======
+vim.keymap.set('n', '<leader>en', vim.diagnostic.goto_next, { desc = '[e]rror [n]ext' })
+vim.keymap.set('n', '<leader>ep', vim.diagnostic.goto_prev, { desc = '[e]rror [p]revious' })
+
+>>>>>>> a668302 (more helpful keymaps)
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 

@@ -910,6 +910,8 @@ require('lazy').setup({
       require('mini.indentscope').setup { delay = 100 }
       require('mini.trailspace').setup()
 
+      vim.keymap.set('n', '<leader>rw', MiniTrailspace.trim, { desc = '[r]emove [w]hitespace' })
+
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
       --  and try some other statusline plugin

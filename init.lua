@@ -437,6 +437,19 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
+      -- Function to search the selected text in Telescope live_grep
+      -- from https://github.com/nvim-telescope/telescope.nvim/issues/2988
+      local get_selection = function()
+        return vim.fn.getregion(vim.fn.getpos '.', vim.fn.getpos 'v', { mode = vim.fn.mode() })
+      end
+
+      vim.keymap.set('v', '<leader>v', function()
+        builtin.live_grep {
+          prompt_title = 'Live Grep in Open Files',
+          default_text = table.concat(get_selection()),
+        }
+      end, { desc = '[v]isual search' })
+
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
@@ -668,6 +681,7 @@ require('lazy').setup({
           },
         },
         eslint = {},
+        bashls = {},
       }
 
       -- Ensure the servers and tools above are installed

@@ -755,6 +755,7 @@ require('lazy').setup({
         end,
       })
 
+<<<<<<< HEAD
       vim.keymap.set('v', '<leader>v', function()
         local val = table.concat(Get_selection())
         print(val)
@@ -810,6 +811,10 @@ require('lazy').setup({
 =======
       -- Override default behavior and theme when searching
 >>>>>>> e79572c (fix: continue cleaning up docs and config)
+||||||| parent of 2e69e99 (add in new features)
+      -- Override default behavior and theme when searching
+=======
+>>>>>>> 2e69e99 (add in new features)
       vim.keymap.set('n', '<leader>/', function()
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
         builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
@@ -1457,7 +1462,14 @@ require('lazy').setup({
             },
           },
         },
+<<<<<<< HEAD
 >>>>>>> b9f3965 (Clean up the lua_ls config)
+||||||| parent of 2e69e99 (add in new features)
+        eslint = {},
+=======
+        eslint = {},
+        bashls = {},
+>>>>>>> 2e69e99 (add in new features)
       }
 
       -- Ensure the servers and tools above are installed

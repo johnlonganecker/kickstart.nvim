@@ -223,6 +223,7 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+<<<<<<< HEAD
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
 -- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
 -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
@@ -232,6 +233,15 @@ vim.keymap.set('n', ',nt', '<Cmd>Neotree toggle<CR>', { desc = 'Toggle Neotree p
 vim.keymap.set('n', '<leader>en', vim.diagnostic.goto_next, { desc = '[e]rror [n]ext' })
 vim.keymap.set('n', '<leader>ep', vim.diagnostic.goto_prev, { desc = '[e]rror [p]revious' })
 
+||||||| parent of e947649 (feat(keymap): move windows without `<C-w>` (#1368))
+=======
+-- NOTE: Some terminals have coliding keymaps or are not able to send distinct keycodes
+-- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
+-- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
+-- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
+-- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
+
+>>>>>>> e947649 (feat(keymap): move windows without `<C-w>` (#1368))
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 

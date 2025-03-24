@@ -891,6 +891,7 @@ require('lazy').setup({
     opts = {
       notify_on_error = false,
       format_on_save = function(bufnr)
+<<<<<<< HEAD
         -- You can specify filetypes to autoformat on save here:
         local enabled_filetypes = {
           -- lua = true,
@@ -901,6 +902,35 @@ require('lazy').setup({
         else
           return nil
         end
+||||||| parent of 5e2d7e1 (changed Conform's format_on_save lambda so that buffers that match disable_filetypes return nil. This allows you to enable a formatter for langages in the disable_filetypes table to have a formatter that can be run manually with Leader-f but doesnt enable format_on_save for them (#1395))
+        -- Disable "format_on_save lsp_fallback" for languages that don't
+        -- have a well standardized coding style. You can add additional
+        -- languages here or re-enable it for the disabled ones.
+        local disable_filetypes = { c = true, cpp = true }
+        local lsp_format_opt
+        if disable_filetypes[vim.bo[bufnr].filetype] then
+          lsp_format_opt = 'never'
+        else
+          lsp_format_opt = 'fallback'
+        end
+        return {
+          timeout_ms = 500,
+          lsp_format = lsp_format_opt,
+        }
+=======
+        -- Disable "format_on_save lsp_fallback" for languages that don't
+        -- have a well standardized coding style. You can add additional
+        -- languages here or re-enable it for the disabled ones.
+        local disable_filetypes = { c = true, cpp = true }
+        if disable_filetypes[vim.bo[bufnr].filetype] then
+          return nil
+        else
+          return {
+            timeout_ms = 500,
+            lsp_format = 'fallback',
+          }
+        end
+>>>>>>> 5e2d7e1 (changed Conform's format_on_save lambda so that buffers that match disable_filetypes return nil. This allows you to enable a formatter for langages in the disable_filetypes table to have a formatter that can be run manually with Leader-f but doesnt enable format_on_save for them (#1395))
       end,
       default_format_opts = {
         lsp_format = 'fallback', -- Use external formatters if configured below, otherwise use LSP formatting. Set to `false` to disable LSP formatting entirely.

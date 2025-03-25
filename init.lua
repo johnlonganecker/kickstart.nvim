@@ -1515,10 +1515,16 @@ require('lazy').setup({
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+||||||| parent of 7b44324 (more features and remove lua warning)
+=======
+<<<<<<< HEAD
+>>>>>>> 7b44324 (more features and remove lua warning)
       for name, server in pairs(servers) do
         vim.lsp.config(name, server)
         vim.lsp.enable(name)
       end
+<<<<<<< HEAD
 ||||||| parent of 34e7d29 (Propsed fix for init.lua warnings as per https://github.com/nvim-lua/kickstart.nvim/issues/1305#issuecomment-2657770325 (#1354))
       require('mason-lspconfig').setup {
         handlers = {
@@ -1615,6 +1621,38 @@ require('lazy').setup({
       vim.lsp.enable 'lua_ls'
 =======
 >>>>>>> b9f3965 (Clean up the lua_ls config)
+||||||| parent of 7b44324 (more features and remove lua warning)
+=======
+||||||| parent of 13f1a62 (more features and remove lua warning)
+      require('mason-lspconfig').setup {
+        handlers = {
+          function(server_name)
+            local server = servers[server_name] or {}
+            -- This handles overriding only values explicitly passed
+            -- by the server configuration above. Useful when disabling
+            -- certain features of an LSP (for example, turning off formatting for ts_ls)
+            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+            require('lspconfig')[server_name].setup(server)
+          end,
+        },
+      }
+=======
+      require('mason-lspconfig').setup {
+        ensure_installed = {},
+        automatic_installation = false,
+        handlers = {
+          function(server_name)
+            local server = servers[server_name] or {}
+            -- This handles overriding only values explicitly passed
+            -- by the server configuration above. Useful when disabling
+            -- certain features of an LSP (for example, turning off formatting for ts_ls)
+            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+            require('lspconfig')[server_name].setup(server)
+          end,
+        },
+      }
+>>>>>>> 13f1a62 (more features and remove lua warning)
+>>>>>>> 7b44324 (more features and remove lua warning)
     end,
   },
 

@@ -116,7 +116,9 @@ vim.o.conceallevel = 1
 -- vim.o.relativenumber = true
 >>>>>>> c92ea7c (Replace vim.opt with vim.o (#1495))
 
+vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4 -- Always 4 (see :h tabstop)
+vim.opt.softtabstop = 4
 
 vim.opt.conceallevel = 1
 
@@ -2427,6 +2429,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.dadbod-ui',
   require 'kickstart.plugins.flash',
   require 'kickstart.plugins.obsidian',
+<<<<<<< HEAD
   -- require 'kickstart.plugins.avante',
 ||||||| parent of 886f2bc (Clarify gitsigns keymap for which-key)
   -- require 'kickstart.plugins.neo-tree',
@@ -2460,6 +2463,11 @@ require('lazy').setup({
 >>>>>>> 428a7de (got dad bod working)
 =======
 >>>>>>> 029b870 (samarth-nagar fix: lazy help tag on line 931 (#1167))
+||||||| parent of cf4bfee (new helpful github function)
+  -- require 'kickstart.plugins.avante',
+=======
+  require 'kickstart.plugins.avante',
+>>>>>>> cf4bfee (new helpful github function)
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
@@ -2514,6 +2522,7 @@ require('lazy').setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+<<<<<<< HEAD
 
 -- UGLY STUFF
 
@@ -2613,3 +2622,23 @@ function Get_selection()
 end
 
 vim.keymap.set('n', '<Leader>cp', ":let @+=expand('%:p')<CR>", { noremap = true, silent = true })
+||||||| parent of cf4bfee (new helpful github function)
+=======
+
+-- UGLY STUFF
+
+function GotoGithubFileRange()
+  local current_full_path = vim.fn.expand '%'
+  local repo_top_level = vim.fn.system('git rev-parse --top-level'):gsub('\n', '')
+
+  local escaped_repo_top_level = repo_top_level:gsub('^([%^%$%(%)%.%[%]%*%+%-%?])', '%%%1')
+
+  local cmd = 'gh browse ' .. current_full_path:gsub(escaped_repo_top_level, '') .. ':' .. vim.fn.line "'<" .. '-' .. "'>"
+
+  print(vim.api.vim_win_get_cursor(0)[1])
+
+  vim.fn.system(cmd)
+end
+
+vim.apinvim_set_keymap('v', '<leader>gg', ':lua GotoGithubFileRange()<CR>', { desc = '[g]ithub [g]o', noremap = true, silent = true })
+>>>>>>> cf4bfee (new helpful github function)

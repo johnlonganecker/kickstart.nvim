@@ -104,7 +104,9 @@ vim.opt.number = true
 --  Experiment for yourself to see if you like it!
 vim.opt.relativenumber = true
 
+vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4 -- Always 4 (see :h tabstop)
+vim.opt.softtabstop = 4
 
 vim.opt.conceallevel = 1
 
@@ -991,7 +993,7 @@ require('lazy').setup({
   require 'kickstart.plugins.dadbod-ui',
   require 'kickstart.plugins.flash',
   require 'kickstart.plugins.obsidian',
-  -- require 'kickstart.plugins.avante',
+  require 'kickstart.plugins.avante',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
@@ -1027,3 +1029,20 @@ require('lazy').setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+-- UGLY STUFF
+
+function GotoGithubFileRange()
+  local current_full_path = vim.fn.expand '%'
+  local repo_top_level = vim.fn.system('git rev-parse --top-level'):gsub('\n', '')
+
+  local escaped_repo_top_level = repo_top_level:gsub('^([%^%$%(%)%.%[%]%*%+%-%?])', '%%%1')
+
+  local cmd = 'gh browse ' .. current_full_path:gsub(escaped_repo_top_level, '') .. ':' .. vim.fn.line "'<" .. '-' .. "'>"
+
+  print(vim.api.vim_win_get_cursor(0)[1])
+
+  vim.fn.system(cmd)
+end
+
+vim.apinvim_set_keymap('v', '<leader>gg', ':lua GotoGithubFileRange()<CR>', { desc = '[g]ithub [g]o', noremap = true, silent = true })

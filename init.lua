@@ -224,6 +224,7 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower win
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
 -- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
 -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
@@ -236,6 +237,11 @@ vim.keymap.set('n', '<leader>ep', vim.diagnostic.goto_prev, { desc = '[e]rror [p
 ||||||| parent of e947649 (feat(keymap): move windows without `<C-w>` (#1368))
 =======
 -- NOTE: Some terminals have coliding keymaps or are not able to send distinct keycodes
+||||||| parent of 8a5a52f (fix: minor misspellings (#1450))
+-- NOTE: Some terminals have coliding keymaps or are not able to send distinct keycodes
+=======
+-- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
+>>>>>>> 8a5a52f (fix: minor misspellings (#1450))
 -- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
 -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })

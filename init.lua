@@ -595,6 +595,16 @@ require('lazy').setup({
 
       -- Useful status updates for LSP.
       { 'j-hui/fidget.nvim', opts = {} },
+<<<<<<< HEAD
+||||||| parent of d350db2 (feat: switch nvim-cmp for blink.cmp (#1426))
+
+      -- Allows extra capabilities provided by nvim-cmp
+      'hrsh7th/cmp-nvim-lsp',
+=======
+
+      -- Allows extra capabilities provided by blink.cmp
+      'saghen/blink.cmp',
+>>>>>>> d350db2 (feat: switch nvim-cmp for blink.cmp (#1426))
     },
     config = function()
       -- Brief aside: **What is LSP?**
@@ -860,10 +870,9 @@ require('lazy').setup({
 
       -- LSP servers and clients are able to communicate to each other what features they support.
       --  By default, Neovim doesn't support everything that is in the LSP specification.
-      --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
-      --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+      --  When you add blink.cmp, luasnip, etc. Neovim now has *more* capabilities.
+      --  So, we create new capabilities with blink.cmp, and then broadcast that to the servers.
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
 
 >>>>>>> 76e06fe (feat(diagnostic): add diagnostic config (#1335))
       -- Enable the following language servers
@@ -1081,6 +1090,7 @@ require('lazy').setup({
         opts = {},
       },
 <<<<<<< HEAD
+<<<<<<< HEAD
 ||||||| parent of 282cbb9 (feat: add basic function signature help (#1358))
       'saadparwaiz1/cmp_luasnip',
 
@@ -1111,7 +1121,20 @@ require('lazy').setup({
 >>>>>>> ea60b2b (Remove duplicate cmp-path (#1369))
       'hrsh7th/cmp-nvim-lsp-signature-help',
 >>>>>>> 7c49ba1 (Fix: fix the cmp-nvim-lsp-signature-help link (#1363))
+||||||| parent of d350db2 (feat: switch nvim-cmp for blink.cmp (#1426))
+      'saadparwaiz1/cmp_luasnip',
+
+      -- Adds other completion capabilities.
+      --  nvim-cmp does not ship with all sources by default. They are split
+      --  into multiple repos for maintenance purposes.
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-nvim-lsp-signature-help',
+=======
+      'folke/lazydev.nvim',
+>>>>>>> d350db2 (feat: switch nvim-cmp for blink.cmp (#1426))
     },
+<<<<<<< HEAD
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
@@ -1126,6 +1149,39 @@ require('lazy').setup({
         --
         -- For an understanding of why the 'default' preset is recommended,
         -- you will need to read `:help ins-completion`
+||||||| parent of d350db2 (feat: switch nvim-cmp for blink.cmp (#1426))
+    config = function()
+      -- See `:help cmp`
+      local cmp = require 'cmp'
+      local luasnip = require 'luasnip'
+      luasnip.config.setup {}
+
+      cmp.setup {
+        snippet = {
+          expand = function(args)
+            luasnip.lsp_expand(args.body)
+          end,
+        },
+        completion = { completeopt = 'menu,menuone,noinsert' },
+
+        -- For an understanding of why these mappings were
+        -- chosen, you will need to read `:help ins-completion`
+=======
+    --- @module 'blink.cmp'
+    --- @type blink.cmp.Config
+    opts = {
+      keymap = {
+        -- 'default' (recommended) for mappings similar to built-in completions
+        --   <c-y> to accept ([y]es) the completion.
+        --    This will auto-import if your LSP supports it.
+        --    This will expand snippets if the LSP sent a snippet.
+        -- 'super-tab' for tab to accept
+        -- 'enter' for enter to accept
+        -- 'none' for no mappings
+        --
+        -- For an understanding of why the 'default' preset is recommended,
+        -- you will need to read `:help ins-completion`
+>>>>>>> d350db2 (feat: switch nvim-cmp for blink.cmp (#1426))
         --
         -- No, but seriously. Please read `:help ins-completion`, it is really good!
         --
@@ -1155,6 +1211,7 @@ require('lazy').setup({
         documentation = { auto_show = false, auto_show_delay_ms = 500 },
       },
 
+<<<<<<< HEAD
       sources = {
         default = { 'lsp', 'path', 'snippets' },
       },
@@ -1193,7 +1250,41 @@ require('lazy').setup({
 =======
           -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
           --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
+||||||| parent of d350db2 (feat: switch nvim-cmp for blink.cmp (#1426))
+          -- Manually trigger a completion from nvim-cmp.
+          --  Generally you don't need this, because nvim-cmp will display
+          --  completions whenever it has completion options available.
+          ['<C-Space>'] = cmp.mapping.complete {},
+
+          -- Think of <c-l> as moving to the right of your snippet expansion.
+          --  So if you have a snippet that's like:
+          --  function $name($args)
+          --    $body
+          --  end
+          --
+          -- <c-l> will move you to the right of each of the expansion locations.
+          -- <c-h> is similar, except moving you backwards.
+          ['<C-l>'] = cmp.mapping(function()
+            if luasnip.expand_or_locally_jumpable() then
+              luasnip.expand_or_jump()
+            end
+          end, { 'i', 's' }),
+          ['<C-h>'] = cmp.mapping(function()
+            if luasnip.locally_jumpable(-1) then
+              luasnip.jump(-1)
+            end
+          end, { 'i', 's' }),
+
+          -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
+          --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
+=======
+      sources = {
+        default = { 'lsp', 'path', 'snippets', 'lazydev' },
+        providers = {
+          lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
+>>>>>>> d350db2 (feat: switch nvim-cmp for blink.cmp (#1426))
         },
+<<<<<<< HEAD
         sources = {
           {
             name = 'lazydev',
@@ -1208,6 +1299,38 @@ require('lazy').setup({
       }
     end,
 >>>>>>> 282cbb9 (feat: add basic function signature help (#1358))
+||||||| parent of d350db2 (feat: switch nvim-cmp for blink.cmp (#1426))
+        sources = {
+          {
+            name = 'lazydev',
+            -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
+            group_index = 0,
+          },
+          { name = 'nvim_lsp' },
+          { name = 'luasnip' },
+          { name = 'path' },
+          { name = 'nvim_lsp_signature_help' },
+        },
+      }
+    end,
+=======
+      },
+
+      snippets = { preset = 'luasnip' },
+
+      -- Blink.cmp includes an optional, recommended rust fuzzy matcher,
+      -- which automatically downloads a prebuilt binary when enabled.
+      --
+      -- By default, we use the Lua implementation instead, but you may enable
+      -- the rust implementation via `'prefer_rust_with_warning'`
+      --
+      -- See :h blink-cmp-config-fuzzy for more information
+      fuzzy = { implementation = 'lua' },
+
+      -- Shows a signature help window while you type arguments for a function
+      signature = { enabled = true },
+    },
+>>>>>>> d350db2 (feat: switch nvim-cmp for blink.cmp (#1426))
   },
 
   { -- You can easily change to a different colorscheme.

@@ -502,6 +502,7 @@ require('lazy').setup({
     'folke/which-key.nvim',
 <<<<<<< HEAD
     event = 'VimEnter',
+<<<<<<< HEAD
     ---@module 'which-key'
     ---@type wk.Opts
     ---@diagnostic disable-next-line: missing-fields
@@ -510,6 +511,12 @@ require('lazy').setup({
 =======
     event = 'VimEnter',
 >>>>>>> 7e54a4c (fix: trimming down config and updating stylua)
+||||||| parent of 177ff61 (Add type hints to plugin options where possible)
+=======
+    ---@module 'which-key'
+    ---@type wk.Opts
+    ---@diagnostic disable-next-line: missing-fields
+>>>>>>> 177ff61 (Add type hints to plugin options where possible)
     opts = {
       -- delay between pressing a key and opening which-key (milliseconds)
 <<<<<<< HEAD
@@ -820,6 +827,7 @@ require('lazy').setup({
       -- Mason must be loaded before its dependents so we need to set it up here.
       -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
 <<<<<<< HEAD
+<<<<<<< HEAD
       {
         'mason-org/mason.nvim',
         ---@module 'mason.settings'
@@ -827,6 +835,17 @@ require('lazy').setup({
         ---@diagnostic disable-next-line: missing-fields
         opts = {},
       },
+||||||| parent of 177ff61 (Add type hints to plugin options where possible)
+      { 'mason-org/mason.nvim', opts = {} },
+=======
+      {
+        'mason-org/mason.nvim',
+        ---@module 'mason.settings'
+        ---@type MasonSettings
+        ---@diagnostic disable-next-line: missing-fields
+        opts = {},
+      },
+>>>>>>> 177ff61 (Add type hints to plugin options where possible)
       -- Maps LSP server names between nvim-lspconfig and Mason package names.
       'mason-org/mason-lspconfig.nvim',
 ||||||| parent of 76cb865 (Change to Mason's new address (#1516))
@@ -1596,6 +1615,7 @@ require('lazy').setup({
 >>>>>>> 0c17d32 (maybe: seeing if we can get away without lazydev and just doing simpler setup)
     },
 <<<<<<< HEAD
+<<<<<<< HEAD
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
@@ -1630,6 +1650,13 @@ require('lazy').setup({
 =======
     --- @module 'blink.cmp'
     --- @type blink.cmp.Config
+||||||| parent of 177ff61 (Add type hints to plugin options where possible)
+    --- @module 'blink.cmp'
+    --- @type blink.cmp.Config
+=======
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+>>>>>>> 177ff61 (Add type hints to plugin options where possible)
     opts = {
       keymap = {
         -- 'default' (recommended) for mappings similar to built-in completions

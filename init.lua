@@ -298,7 +298,17 @@ vim.keymap.set('n', '<leader>ep', vim.diagnostic.goto_prev, { desc = '[e]rror [p
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+<<<<<<< HEAD
   callback = function() vim.hl.on_yank() end,
+||||||| parent of 6ba2408 (fix: rename vim.highlight.on_yank to vim.hl.on_yank (#1482))
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+=======
+  callback = function()
+    vim.hl.on_yank()
+  end,
+>>>>>>> 6ba2408 (fix: rename vim.highlight.on_yank to vim.hl.on_yank (#1482))
 })
 
 -- [[ Install `lazy.nvim` plugin manager ]]

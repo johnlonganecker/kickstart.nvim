@@ -102,6 +102,7 @@ vim.g.have_nerd_font = true
 vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
+<<<<<<< HEAD
 vim.o.relativenumber = true
 
 vim.o.shiftwidth = 4
@@ -109,6 +110,11 @@ vim.o.tabstop = 4 -- Always 4 (see :h tabstop)
 vim.o.softtabstop = 4
 
 vim.o.conceallevel = 1
+||||||| parent of c92ea7c (Replace vim.opt with vim.o (#1495))
+-- vim.opt.relativenumber = true
+=======
+-- vim.o.relativenumber = true
+>>>>>>> c92ea7c (Replace vim.opt with vim.o (#1495))
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
@@ -120,13 +126,31 @@ vim.o.showmode = false
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
+<<<<<<< HEAD
 vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
+||||||| parent of c92ea7c (Replace vim.opt with vim.o (#1495))
+vim.schedule(function()
+  vim.opt.clipboard = 'unnamedplus'
+end)
+=======
+vim.schedule(function()
+  vim.o.clipboard = 'unnamedplus'
+end)
+>>>>>>> c92ea7c (Replace vim.opt with vim.o (#1495))
 
 -- Enable break indent
 vim.o.breakindent = true
 
+<<<<<<< HEAD
 -- Enable undo/redo changes even after closing and reopening a file
 vim.o.undofile = false
+||||||| parent of c92ea7c (Replace vim.opt with vim.o (#1495))
+-- Save undo history
+vim.opt.undofile = true
+=======
+-- Save undo history
+vim.o.undofile = true
+>>>>>>> c92ea7c (Replace vim.opt with vim.o (#1495))
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.o.ignorecase = true
@@ -148,12 +172,23 @@ vim.o.splitbelow = true
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
+<<<<<<< HEAD
 --
 --  Notice listchars is set using `vim.opt` instead of `vim.o`.
 --  It is very similar to `vim.o` but offers an interface for conveniently interacting with tables.
 --   See `:help lua-options`
 --   and `:help lua-guide-options`
 vim.o.list = true
+||||||| parent of c92ea7c (Replace vim.opt with vim.o (#1495))
+vim.opt.list = true
+=======
+--
+--  Notice listchars is set using `vim.opt` instead of `vim.o`.
+--  It is very similar to `vim.o` but offers an interface for conveniently interacting with tables.
+--   See `:help lua-options`
+--   and `:help lua-options-guide`
+vim.o.list = true
+>>>>>>> c92ea7c (Replace vim.opt with vim.o (#1495))
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
@@ -163,17 +198,23 @@ vim.o.inccommand = 'split'
 vim.o.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
+<<<<<<< HEAD
 vim.o.scrolloff = 10
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
 vim.o.confirm = true
+||||||| parent of c92ea7c (Replace vim.opt with vim.o (#1495))
+vim.opt.scrolloff = 10
+=======
+vim.o.scrolloff = 10
+>>>>>>> c92ea7c (Replace vim.opt with vim.o (#1495))
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
-vim.opt.confirm = true
+vim.o.confirm = true
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -266,12 +307,29 @@ local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
   local out = vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
+<<<<<<< HEAD
   if vim.v.shell_error ~= 0 then error('Error cloning lazy.nvim:\n' .. out) end
 end
 
 ---@type vim.Option
 local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
+||||||| parent of c92ea7c (Replace vim.opt with vim.o (#1495))
+  if vim.v.shell_error ~= 0 then
+    error('Error cloning lazy.nvim:\n' .. out)
+  end
+end ---@diagnostic disable-next-line: undefined-field
+vim.opt.rtp:prepend(lazypath)
+=======
+  if vim.v.shell_error ~= 0 then
+    error('Error cloning lazy.nvim:\n' .. out)
+  end
+end
+
+---@type vim.Option
+local rtp = vim.opt.rtp
+rtp:prepend(lazypath)
+>>>>>>> c92ea7c (Replace vim.opt with vim.o (#1495))
 
 -- [[ Configure and install plugins ]]
 --
@@ -374,6 +432,12 @@ require('lazy').setup({
     ---@diagnostic disable-next-line: missing-fields
     opts = {
       -- delay between pressing a key and opening which-key (milliseconds)
+<<<<<<< HEAD
+||||||| parent of c92ea7c (Replace vim.opt with vim.o (#1495))
+      -- this setting is independent of vim.opt.timeoutlen
+=======
+      -- this setting is independent of vim.o.timeoutlen
+>>>>>>> c92ea7c (Replace vim.opt with vim.o (#1495))
       delay = 0,
       icons = { mappings = vim.g.have_nerd_font },
 

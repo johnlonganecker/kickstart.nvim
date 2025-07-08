@@ -1,0 +1,40 @@
+Ideal Canidate
+- Engineer
+  - Some cool projects you have worked on?
+- Devise solutions to create a secure GSP
+- NIST 800-171
+
+Example Scenario
+------------------
+https://iceye-us.atlassian.net/wiki/spaces/DPR/pages/17894047745/Cloud+Security+Engineer+Interview+Take-Home+Assignment
+
+EC2
+-----
+- Hardening?
+- Scanning?
+- Access to server? how to limit access so OS user maps to human user
+
+Containers/Kubernetes
+- k8s secrets
+- scanning
+
+Encryption
+- What is encryption?
+- intransit vs at rest
+- tls
+- ssh
+
+Network
+- IP/Ports
+- firewall, stateless vs stateful
+
+Audits
+- do you have experience working with audits
+
+User Access
+-
+
+What is a central way to track compliance?
+
+Database Security?
+- SQL injection?

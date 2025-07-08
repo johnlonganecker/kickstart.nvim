@@ -441,14 +441,13 @@ require('lazy').setup({
 
       -- Function to search the selected text in Telescope live_grep
       -- from https://github.com/nvim-telescope/telescope.nvim/issues/2988
-      local get_selection = function()
-        return vim.fn.getregion(vim.fn.getpos '.', vim.fn.getpos 'v', { mode = vim.fn.mode() })
-      end
 
       vim.keymap.set('v', '<leader>v', function()
+        local val = table.concat(Get_selection())
+        print(val)
         builtin.live_grep {
           prompt_title = 'Live Grep in Open Files',
-          default_text = table.concat(get_selection()),
+          default_text = table.concat(Get_selection()),
         }
       end, { desc = '[v]isual search' })
 
@@ -767,7 +766,14 @@ require('lazy').setup({
       },
     },
   },
-
+  {
+    'L3MON4D3/LuaSnip',
+    version = 'v2.*', -- Optional: Pin to stable version
+    build = 'make install_jsregexp', -- Optional, for regex snippets
+    config = function()
+      require('luasnip.loaders.from_lua').lazy_load { paths = { '~/.config/nvim/snippets' } }
+    end,
+  },
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
@@ -990,6 +996,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+  require 'kickstart.plugins.smear-cursor',
   require 'kickstart.plugins.dadbod-ui',
   require 'kickstart.plugins.flash',
   require 'kickstart.plugins.obsidian',
@@ -1032,17 +1039,97 @@ require('lazy').setup({
 
 -- UGLY STUFF
 
+-- Escape all Lua pattern magic characters
+local function escape_pattern(text)
+  return text:gsub('([^%w])', '%%%1')
+end
+
 function GotoGithubFileRange()
   local current_full_path = vim.fn.expand '%'
-  local repo_top_level = vim.fn.system('git rev-parse --top-level'):gsub('\n', '')
+  local repo_top_level = vim.fn.system('git rev-parse --show-toplevel'):gsub('\n', '')
+  print(repo_top_level)
+  print(current_full_path)
 
-  local escaped_repo_top_level = repo_top_level:gsub('^([%^%$%(%)%.%[%]%*%+%-%?])', '%%%1')
+  --local escaped_repo_top_level = repo_top_level:gsub('^([%^%$%(%)%.%[%]%*%+%-%?])', '%%%1')
+  local escaped_repo_top_level = escape_pattern(repo_top_level)
 
-  local cmd = 'gh browse ' .. current_full_path:gsub(escaped_repo_top_level, '') .. ':' .. vim.fn.line "'<" .. '-' .. "'>"
-
-  print(vim.api.vim_win_get_cursor(0)[1])
+  local cmd = 'gh browse ' .. current_full_path:gsub(escaped_repo_top_level, '') .. ':' .. vim.fn.line "'<" .. '-' .. vim.fn.line "'>"
+  print(cmd)
 
   vim.fn.system(cmd)
 end
 
-vim.apinvim_set_keymap('v', '<leader>gg', ':lua GotoGithubFileRange()<CR>', { desc = '[g]ithub [g]o', noremap = true, silent = true })
+vim.keymap.set('v', '<leader>gg', GotoGithubFileRange, { desc = '[g]ithub [g]o', noremap = true, silent = true })
+
+function GotoGithubFile()
+  local current_full_path = vim.fn.expand '%'
+  local repo_top_level = vim.fn.system('git rev-parse --show-toplevel'):gsub('\n', '')
+  print(repo_top_level)
+
+  -- local escaped_repo_top_level = repo_top_level:gsub('^([%^%$%(%)%.%[%]%*%+%-%?])', '%%%1')
+  local escaped_repo_top_level = escape_pattern(repo_top_level)
+
+  local line_number = vim.api.nvim_win_get_cursor(0)[1]
+
+  local cmd = 'gh browse ' .. current_full_path:gsub(escaped_repo_top_level, '') .. ':' .. line_number
+  print(cmd)
+
+  vim.fn.system(cmd)
+end
+vim.keymap.set('n', '<leader>gg', GotoGithubFile, { desc = '[g]ithub [g]o', noremap = true, silent = true })
+
+function OpenDiffWithGitPath()
+  -- Get the current file's relative path in the git repository
+  local relative_path = vim.fn.system('git rev-parse --show-prefix'):gsub('\n', '')
+
+  -- Define the base path (update this path as per your needs)
+  local oy_path = vim.fn.expand '$HOME' .. '/projects/dc/oy-deployment-configuration'
+
+  -- TODO: create a map to default to IE an override if oy's path is different from ours
+  -- local mapping = {['us-path'] = "oy-path"}
+  local mappings = {
+    ['aws_gs/gsc/iceye_auth/gateway_connection_service/production/'] = 'aws_gs/gsc/iceye_auth/gateway-connection-service/production/',
+    ['aws_gs/gsc/iceye_auth/gateway_connection_service/module/'] = 'aws_gs/gsc/iceye_auth/gateway-connection-service/module/',
+  }
+
+  if mappings[relative_path] then
+    relative_path = mappings[relative_path]
+    print 'found mapping using that'
+  end
+  local target_file = oy_path .. '/' .. relative_path .. vim.fn.expand '%:t'
+
+  -- Open the current file in a diff split with the file from the target path
+  vim.cmd('vert diffsplit ' .. target_file)
+end
+
+-- Map the function to a keybinding (e.g., <leader>d)
+-- TODO: create a way to do :vsplit <oy-file>
+vim.keymap.set('n', '<leader>doy', OpenDiffWithGitPath, { noremap = true, silent = true })
+
+-- vim.keymap.set('n', '<leader>gg', ':lua GotoGithubFile()<CR>', { desc = '[g]ithub [g]o', noremap = true, silent = true })
+
+-- function GotoGithubPR()
+--   -- Get the blame information for that line
+--   gitsigns.blame_line({ num = line, full = true }, function(blame)
+--     if blame then
+--       -- Yank the commit hash to the clipboard
+--       vim.fn.setreg('+', blame.commit)
+--       print('Commit hash yanked: ' .. blame.commit)
+--     else
+--       print 'No blame information found.'
+--     end
+--   end)
+-- end
+--
+-- vim.keymap.set('n', '<leader>cpn', ':lua GotoGithubPR()<CR>', { desc = '[c]opy [p]ull request [n]umber', noremap = true, silent = true })
+
+function GotoGithubPR()
+  local pr_num = vim.fn.expand '<cword>'
+  vim.fn.system('gh browse ' .. pr_num)
+end
+
+vim.keymap.set('n', '<leader>gtp', GotoGithubPR, { desc = '[g]o [t]o [p]ull request' })
+
+function Get_selection()
+  return vim.fn.getregion(vim.fn.getpos '.', vim.fn.getpos 'v', { mode = vim.fn.mode() })
+end

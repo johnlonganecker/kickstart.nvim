@@ -20,6 +20,7 @@ return {
   opts = {
     sources = { 'filesystem', 'buffers', 'git_status' },
     filesystem = {
+<<<<<<< HEAD
       filtered_items = {
         visible = true,
         hide_dotfiles = false,
@@ -33,6 +34,26 @@ return {
     window = {
       mappings = {
         ['\\'] = 'close_window',
+||||||| parent of a5993a8 (neo-tree change)
+      window = {
+        mappings = {
+          ['\\'] = 'close_window',
+        },
+=======
+      filtered_items = {
+        visible = true,
+        hide_dotfiles = false,
+        never_show = { '.git' },
+      },
+      follow_current_file = {
+        enabled = true,
+        leave_dirs_open = false,
+      },
+      window = {
+        mappings = {
+          ['\\'] = 'close_window',
+        },
+>>>>>>> a5993a8 (neo-tree change)
       },
     },
   },

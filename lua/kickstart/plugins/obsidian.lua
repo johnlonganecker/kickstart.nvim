@@ -34,6 +34,10 @@ return {
         name = 'tech',
         path = '~/projects/obsidian/tech',
       },
+      {
+        name = 'sar',
+        path = '~/projects/obsidian/sar',
+      },
     },
   },
 }

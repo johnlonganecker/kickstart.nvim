@@ -14,6 +14,7 @@ return {
     { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
   },
   opts = {
+    sources = { 'filesystem', 'buffers', 'git_status' },
     filesystem = {
       filtered_items = {
         visible = true,
@@ -22,12 +23,12 @@ return {
       },
       follow_current_file = {
         enabled = true,
-        leave_dirs_open = false,
+        leave_dirs_open = true,
       },
-      window = {
-        mappings = {
-          ['\\'] = 'close_window',
-        },
+    },
+    window = {
+      mappings = {
+        ['\\'] = 'close_window',
       },
     },
   },

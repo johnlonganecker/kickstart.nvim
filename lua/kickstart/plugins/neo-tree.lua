@@ -47,13 +47,25 @@ return {
       },
       follow_current_file = {
         enabled = true,
-        leave_dirs_open = false,
+        leave_dirs_open = true,
       },
+<<<<<<< HEAD
       window = {
         mappings = {
           ['\\'] = 'close_window',
         },
 >>>>>>> a5993a8 (neo-tree change)
+||||||| parent of 2682d29 (files)
+      window = {
+        mappings = {
+          ['\\'] = 'close_window',
+        },
+=======
+    },
+    window = {
+      mappings = {
+        ['\\'] = 'close_window',
+>>>>>>> 2682d29 (files)
       },
     },
   },

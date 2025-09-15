@@ -2484,7 +2484,13 @@ require('lazy').setup({
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
 <<<<<<< HEAD
+<<<<<<< HEAD
   require 'kickstart.plugins.neo-tree',
+||||||| parent of 2682d29 (files)
+  -- require 'kickstart.plugins.neo-tree',
+=======
+  require 'kickstart.plugins.neo-tree',
+>>>>>>> 2682d29 (files)
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 <<<<<<< HEAD
   require 'kickstart.plugins.smear-cursor',

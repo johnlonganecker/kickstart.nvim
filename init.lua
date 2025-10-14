@@ -664,7 +664,7 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
+        ts_ls = {},
         --
 
         lua_ls = {
@@ -1133,3 +1133,5 @@ vim.keymap.set('n', '<leader>gtp', GotoGithubPR, { desc = '[g]o [t]o [p]ull requ
 function Get_selection()
   return vim.fn.getregion(vim.fn.getpos '.', vim.fn.getpos 'v', { mode = vim.fn.mode() })
 end
+
+vim.keymap.set('n', '<Leader>cp', ":let @+=expand('%:p')<CR>", { noremap = true, silent = true })

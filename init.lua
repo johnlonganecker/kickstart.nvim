@@ -1380,7 +1380,14 @@ require('lazy').setup({
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
 <<<<<<< HEAD
+<<<<<<< HEAD
         ts_ls = {},
+||||||| parent of c85c713 (new stuff)
+        -- ts_ls = {},
+=======
+        ts_ls = {},
+        --
+>>>>>>> c85c713 (new stuff)
 
         stylua = {}, -- Used to format Lua code
         --
@@ -2694,6 +2701,7 @@ vim.keymap.set('n', '<leader>gtp', GotoGithubPR, { desc = '[g]o [t]o [p]ull requ
 function Get_selection()
   return vim.fn.getregion(vim.fn.getpos '.', vim.fn.getpos 'v', { mode = vim.fn.mode() })
 end
+<<<<<<< HEAD
 
 vim.keymap.set('n', '<Leader>cp', ":let @+=expand('%:p')<CR>", { noremap = true, silent = true })
 ||||||| parent of cf4bfee (new helpful github function)
@@ -2802,3 +2810,8 @@ function Get_selection()
   return vim.fn.getregion(vim.fn.getpos '.', vim.fn.getpos 'v', { mode = vim.fn.mode() })
 end
 >>>>>>> 2dafde3 (new stuff)
+||||||| parent of c85c713 (new stuff)
+=======
+
+vim.keymap.set('n', '<Leader>cp', ":let @+=expand('%:p')<CR>", { noremap = true, silent = true })
+>>>>>>> c85c713 (new stuff)

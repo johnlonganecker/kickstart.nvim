@@ -127,6 +127,7 @@ vim.o.showmode = false
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 <<<<<<< HEAD
+<<<<<<< HEAD
 vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
 ||||||| parent of c92ea7c (Replace vim.opt with vim.o (#1495))
 vim.schedule(function()
@@ -137,6 +138,13 @@ vim.schedule(function()
   vim.o.clipboard = 'unnamedplus'
 end)
 >>>>>>> c92ea7c (Replace vim.opt with vim.o (#1495))
+||||||| parent of 7e54a4c (fix: trimming down config and updating stylua)
+vim.schedule(function()
+  vim.o.clipboard = 'unnamedplus'
+end)
+=======
+vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
+>>>>>>> 7e54a4c (fix: trimming down config and updating stylua)
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -299,6 +307,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
 <<<<<<< HEAD
+<<<<<<< HEAD
   callback = function() vim.hl.on_yank() end,
 ||||||| parent of 6ba2408 (fix: rename vim.highlight.on_yank to vim.hl.on_yank (#1482))
   callback = function()
@@ -309,6 +318,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.hl.on_yank()
   end,
 >>>>>>> 6ba2408 (fix: rename vim.highlight.on_yank to vim.hl.on_yank (#1482))
+||||||| parent of 7e54a4c (fix: trimming down config and updating stylua)
+  callback = function()
+    vim.hl.on_yank()
+  end,
+=======
+  callback = function() vim.hl.on_yank() end,
+>>>>>>> 7e54a4c (fix: trimming down config and updating stylua)
 })
 
 -- [[ Install `lazy.nvim` plugin manager ]]
@@ -317,6 +333,7 @@ local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
   local out = vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
+<<<<<<< HEAD
 <<<<<<< HEAD
   if vim.v.shell_error ~= 0 then error('Error cloning lazy.nvim:\n' .. out) end
 end
@@ -334,6 +351,13 @@ vim.opt.rtp:prepend(lazypath)
   if vim.v.shell_error ~= 0 then
     error('Error cloning lazy.nvim:\n' .. out)
   end
+||||||| parent of 7e54a4c (fix: trimming down config and updating stylua)
+  if vim.v.shell_error ~= 0 then
+    error('Error cloning lazy.nvim:\n' .. out)
+  end
+=======
+  if vim.v.shell_error ~= 0 then error('Error cloning lazy.nvim:\n' .. out) end
+>>>>>>> 7e54a4c (fix: trimming down config and updating stylua)
 end
 
 ---@type vim.Option
@@ -372,6 +396,7 @@ require('lazy').setup({
   { 'NMAC427/guess-indent.nvim', opts = {} },
 >>>>>>> b2af42a (fix: call setup on guess indent)
 
+<<<<<<< HEAD
   -- Alternatively, use `config = function() ... end` for full control over the configuration.
   -- If you prefer to call `setup` explicitly, use:
   --    {
@@ -392,6 +417,16 @@ require('lazy').setup({
   -- Use `opts = {}` to automatically pass options to a plugin's `setup()` function, forcing the plugin to be loaded.
   --
 
+||||||| parent of 7e54a4c (fix: trimming down config and updating stylua)
+  -- NOTE: Plugins can also be added by using a table,
+  -- with the first argument being the link and the following
+  -- keys can be used to configure plugin behavior/loading/etc.
+  --
+  -- Use `opts = {}` to automatically pass options to a plugin's `setup()` function, forcing the plugin to be loaded.
+  --
+
+=======
+>>>>>>> 7e54a4c (fix: trimming down config and updating stylua)
   -- Alternatively, use `config = function() ... end` for full control over the configuration.
   -- If you prefer to call `setup` explicitly, use:
   --    {
@@ -444,18 +479,29 @@ require('lazy').setup({
 
   { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
+<<<<<<< HEAD
     event = 'VimEnter',
     ---@module 'which-key'
     ---@type wk.Opts
     ---@diagnostic disable-next-line: missing-fields
+||||||| parent of 7e54a4c (fix: trimming down config and updating stylua)
+    event = 'VimEnter', -- Sets the loading event to 'VimEnter'
+=======
+    event = 'VimEnter',
+>>>>>>> 7e54a4c (fix: trimming down config and updating stylua)
     opts = {
       -- delay between pressing a key and opening which-key (milliseconds)
+<<<<<<< HEAD
 <<<<<<< HEAD
 ||||||| parent of c92ea7c (Replace vim.opt with vim.o (#1495))
       -- this setting is independent of vim.opt.timeoutlen
 =======
       -- this setting is independent of vim.o.timeoutlen
 >>>>>>> c92ea7c (Replace vim.opt with vim.o (#1495))
+||||||| parent of 7e54a4c (fix: trimming down config and updating stylua)
+      -- this setting is independent of vim.o.timeoutlen
+=======
+>>>>>>> 7e54a4c (fix: trimming down config and updating stylua)
       delay = 0,
       icons = { mappings = vim.g.have_nerd_font },
 
@@ -970,6 +1016,7 @@ require('lazy').setup({
 <<<<<<< HEAD
 <<<<<<< HEAD
           if client and client:supports_method('textDocument/inlayHint', event.buf) then
+<<<<<<< HEAD
             map('<leader>th', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf }) end, '[T]oggle Inlay [H]ints')
 ||||||| parent of db78c0b (fix: arguments for the `vim.lsp.Client.supports_method` method (#1356))
           if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
@@ -997,6 +1044,13 @@ require('lazy').setup({
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
             end, '[T]oggle Inlay [H]ints')
 >>>>>>> db78c0b (fix: arguments for the `vim.lsp.Client.supports_method` method (#1356))
+||||||| parent of 7e54a4c (fix: trimming down config and updating stylua)
+            map('<leader>th', function()
+              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
+            end, '[T]oggle Inlay [H]ints')
+=======
+            map('<leader>th', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf }) end, '[T]oggle Inlay [H]ints')
+>>>>>>> 7e54a4c (fix: trimming down config and updating stylua)
           end
         end,
       })
@@ -1189,9 +1243,7 @@ require('lazy').setup({
         on_init = function(client)
           if client.workspace_folders then
             local path = client.workspace_folders[1].name
-            if path ~= vim.fn.stdpath 'config' and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc')) then
-              return
-            end
+            if path ~= vim.fn.stdpath 'config' and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc')) then return end
           end
 
           client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
@@ -1230,7 +1282,15 @@ require('lazy').setup({
     keys = {
       {
         '<leader>f',
+<<<<<<< HEAD
         function() require('conform').format { async = true } end,
+||||||| parent of 7e54a4c (fix: trimming down config and updating stylua)
+        function()
+          require('conform').format { async = true, lsp_format = 'fallback' }
+        end,
+=======
+        function() require('conform').format { async = true, lsp_format = 'fallback' } end,
+>>>>>>> 7e54a4c (fix: trimming down config and updating stylua)
         mode = '',
         desc = '[F]ormat buffer',
       },
@@ -1797,9 +1857,7 @@ require('lazy').setup({
       require('nvim-treesitter').install(filetypes)
       vim.api.nvim_create_autocmd('FileType', {
         pattern = filetypes,
-        callback = function()
-          vim.treesitter.start()
-        end,
+        callback = function() vim.treesitter.start() end,
       })
     end,
 >>>>>>> 7ea937d (fix: as far as i can tell i updated to the right tree sitter stuff)

@@ -862,6 +862,7 @@ require('lazy').setup({
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
           if client and client:supports_method('textDocument/documentHighlight', event.buf) then
 ||||||| parent of db78c0b (fix: arguments for the `vim.lsp.Client.supports_method` method (#1356))
           if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
@@ -878,6 +879,11 @@ require('lazy').setup({
 =======
           if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
 >>>>>>> 3ddda4a (update: remove client_supports_method (#1810))
+||||||| parent of 3582280 (fix: remove deprecated methods)
+          if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
+=======
+          if client and client:supports_method('textDocument/documentHighlight', event.buf) then
+>>>>>>> 3582280 (fix: remove deprecated methods)
             local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
               buffer = event.buf,
@@ -907,6 +913,7 @@ require('lazy').setup({
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
           if client and client:supports_method('textDocument/inlayHint', event.buf) then
             map('<leader>th', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf }) end, '[T]oggle Inlay [H]ints')
 ||||||| parent of db78c0b (fix: arguments for the `vim.lsp.Client.supports_method` method (#1356))
@@ -916,6 +923,11 @@ require('lazy').setup({
 =======
           if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
 >>>>>>> 3ddda4a (update: remove client_supports_method (#1810))
+||||||| parent of 3582280 (fix: remove deprecated methods)
+          if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+=======
+          if client and client:supports_method('textDocument/inlayHint', event.buf) then
+>>>>>>> 3582280 (fix: remove deprecated methods)
             map('<leader>th', function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
             end, '[T]oggle Inlay [H]ints')

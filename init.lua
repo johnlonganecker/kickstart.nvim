@@ -231,6 +231,7 @@ vim.o.confirm = true
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+<<<<<<< HEAD
 -- Diagnostic Config & Keymaps
 -- See :help vim.diagnostic.Opts
 vim.diagnostic.config {
@@ -247,6 +248,26 @@ vim.diagnostic.config {
   jump = { float = true },
 }
 
+||||||| parent of e79572c (fix: continue cleaning up docs and config)
+-- Diagnostic keymaps
+=======
+-- Diagnostic Config & Keymaps
+-- See :help vim.diagnostic.Opts
+vim.diagnostic.config {
+  update_in_insert = false,
+  severity_sort = true,
+  float = { border = 'rounded', source = 'if_many' },
+  underline = { severity = vim.diagnostic.severity.ERROR },
+
+  -- Can switch between these as you prefer
+  virtual_text = true, -- Text shows up at the end of the line
+  virtual_lines = false, -- Teest shows up underneath the line, with virtual lines
+
+  -- Auto open the float, so you can easily read the errors when jumping with `[d` and `]d`
+  jump = { float = true },
+}
+
+>>>>>>> e79572c (fix: continue cleaning up docs and config)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
@@ -601,6 +622,7 @@ require('lazy').setup({
         --   },
         -- },
         -- pickers = {}
+<<<<<<< HEAD
         defaults = {
           vimgrep_arguments = {
             'ack',
@@ -609,6 +631,15 @@ require('lazy').setup({
             '--column',
             '--smart-case',
           },
+||||||| parent of e79572c (fix: continue cleaning up docs and config)
+        extensions = {
+          ['ui-select'] = {
+            require('telescope.themes').get_dropdown(),
+          },
+=======
+        extensions = {
+          ['ui-select'] = { require('telescope.themes').get_dropdown() },
+>>>>>>> e79572c (fix: continue cleaning up docs and config)
         },
         extensions = {
           ['ui-select'] = { require('telescope.themes').get_dropdown() },
@@ -682,11 +713,7 @@ require('lazy').setup({
       -- Slightly advanced example of overriding default behavior and theme
 =======
       -- This runs on LSP attach per buffer (see main LSP attach function in 'neovim/nvim-lspconfig' config for more info,
-      -- it is better explained there). This is a little bit redundant, but we can switch off telescope for an optional
-      -- picker like snacks more easily when the keymaps are defined in the plugin itself.
-      -- It sets up buffer-local keymaps, autocommands, and other LSP-related settings
-      -- whenever an LSP client attaches to a buffer.
-
+      -- it is better explained there). This allows easily switching between pickers if you prefer using something else!
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('telescope-lsp-attach', { clear = true }),
         callback = function(event)
@@ -719,8 +746,14 @@ require('lazy').setup({
         end,
       })
 
+<<<<<<< HEAD
       -- Slightly advanced example of overriding default behavior and theme
 >>>>>>> e87b728 (feat: move Telescope config to be contained by plugin (#1843))
+||||||| parent of e79572c (fix: continue cleaning up docs and config)
+      -- Slightly advanced example of overriding default behavior and theme
+=======
+      -- Override default behavior and theme when searching
+>>>>>>> e79572c (fix: continue cleaning up docs and config)
       vim.keymap.set('n', '<leader>/', function()
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
         builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
@@ -801,8 +834,13 @@ require('lazy').setup({
       'williamboman/mason-lspconfig.nvim',
 =======
       { 'mason-org/mason.nvim', opts = {} },
+<<<<<<< HEAD
       'mason-org/mason-lspconfig.nvim',
 >>>>>>> 76cb865 (Change to Mason's new address (#1516))
+||||||| parent of e79572c (fix: continue cleaning up docs and config)
+      'mason-org/mason-lspconfig.nvim',
+=======
+>>>>>>> e79572c (fix: continue cleaning up docs and config)
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
       -- Useful status updates for LSP.
@@ -1056,6 +1094,7 @@ require('lazy').setup({
       })
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ||||||| parent of 76e06fe (feat(diagnostic): add diagnostic config (#1335))
       -- Change diagnostic symbols in the sign column (gutter)
       -- if vim.g.have_nerd_font then
@@ -1091,6 +1130,25 @@ require('lazy').setup({
         jump = { float = true },
       }
 
+||||||| parent of e79572c (fix: continue cleaning up docs and config)
+      -- Diagnostic Config
+      -- See :help vim.diagnostic.Opts
+      vim.diagnostic.config {
+        update_in_insert = false,
+        severity_sort = true,
+        float = { border = 'rounded', source = 'if_many' },
+        underline = { severity = vim.diagnostic.severity.ERROR },
+
+        -- Can switch between these as you prefer
+        virtual_text = true, -- Text shows up at the end of the line
+        virtual_lines = false, -- Teest shows up underneath the line, with virtual lines
+
+        -- Auto open the float, so you can easily read the errors when jumping with `[d` and `]d`
+        jump = { float = true },
+      }
+
+=======
+>>>>>>> e79572c (fix: continue cleaning up docs and config)
       -- LSP servers and clients are able to communicate to each other what features they support.
       --  By default, Neovim doesn't support everything that is in the LSP specification.
       --  When you add blink.cmp, luasnip, etc. Neovim now has *more* capabilities.
@@ -1100,8 +1158,20 @@ require('lazy').setup({
 >>>>>>> 76e06fe (feat(diagnostic): add diagnostic config (#1335))
       -- Enable the following language servers
       --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
+<<<<<<< HEAD
       --  See `:help lsp-config` for information about keys and how to configure
       ---@type table<string, vim.lsp.Config>
+||||||| parent of e79572c (fix: continue cleaning up docs and config)
+      --
+      --  Add any additional override configuration in the following tables. Available keys are:
+      --  - cmd (table): Override the default command used to start the server
+      --  - filetypes (table): Override the default list of associated filetypes for the server
+      --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
+      --  - settings (table): Override the default settings passed when initializing the server.
+      --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+=======
+      --  See `:help lsp-config` for information about keys and how to configure
+>>>>>>> e79572c (fix: continue cleaning up docs and config)
       local servers = {
         -- clangd = {},
         gopls = {},
@@ -1185,6 +1255,13 @@ require('lazy').setup({
       -- You can press `g?` for help in this menu.
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
+<<<<<<< HEAD
+||||||| parent of e79572c (fix: continue cleaning up docs and config)
+        'stylua', -- Used to format Lua code
+=======
+        'lua_ls', -- Lua Language server
+        'stylua', -- Used to format Lua code
+>>>>>>> e79572c (fix: continue cleaning up docs and config)
         -- You can add other tools here that you want Mason to install
         'stylua', -- Used to format Lua code
 <<<<<<< HEAD
@@ -1239,6 +1316,7 @@ require('lazy').setup({
         vim.lsp.enable(name)
       end
 
+      -- Special Lua Config, as recommended by neovim help docs
       vim.lsp.config('lua_ls', {
         on_init = function(client)
           if client.workspace_folders then
@@ -1249,10 +1327,7 @@ require('lazy').setup({
           client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
             runtime = {
               version = 'LuaJIT',
-              path = {
-                'lua/?.lua',
-                'lua/?/init.lua',
-              },
+              path = { 'lua/?.lua', 'lua/?/init.lua' },
             },
             workspace = {
               checkThirdParty = false,

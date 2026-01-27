@@ -462,6 +462,7 @@ require('lazy').setup({
       -- Document existing key chains
       spec = {
 <<<<<<< HEAD
+<<<<<<< HEAD
         { '<leader>s', group = '[S]earch', mode = { 'n', 'v' } },
 ||||||| parent of 1a5787b (Change LSP Keybindings to Match the Default `gr` Bindings Introduced in Neovim 0.11 (#1427))
         { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
@@ -472,6 +473,11 @@ require('lazy').setup({
 =======
         { '<leader>s', group = '[S]earch' },
 >>>>>>> 1a5787b (Change LSP Keybindings to Match the Default `gr` Bindings Introduced in Neovim 0.11 (#1427))
+||||||| parent of 8c6b78c (feat(grep-string): works with visual selection too (#1605))
+        { '<leader>s', group = '[S]earch' },
+=======
+        { '<leader>s', group = '[S]earch', mode = { 'n', 'v' } },
+>>>>>>> 8c6b78c (feat(grep-string): works with visual selection too (#1605))
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } }, -- Enable gitsigns recommended keymaps first
         { 'gr', group = 'LSP Actions', mode = { 'n' } },

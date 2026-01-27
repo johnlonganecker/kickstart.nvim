@@ -1071,12 +1071,18 @@ require('lazy').setup({
       vim.list_extend(ensure_installed, {
         -- You can add other tools here that you want Mason to install
         'stylua', -- Used to format Lua code
+<<<<<<< HEAD
         'templ', -- Used to work with html templates
         'terraform-ls',
+||||||| parent of ad246eb (fix: remove mason-lspconfig, we do not need it anymore)
+=======
+        -- You can add other tools here that you want Mason to install
+>>>>>>> ad246eb (fix: remove mason-lspconfig, we do not need it anymore)
       })
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
       for name, server in pairs(servers) do
         vim.lsp.config(name, server)
@@ -1104,6 +1110,13 @@ require('lazy').setup({
 ||||||| parent of 0c17d32 (maybe: seeing if we can get away without lazydev and just doing simpler setup)
 =======
 
+||||||| parent of ad246eb (fix: remove mason-lspconfig, we do not need it anymore)
+      require('mason-lspconfig').setup {
+        ensure_installed = { 'lua_ls' },
+      }
+
+=======
+>>>>>>> ad246eb (fix: remove mason-lspconfig, we do not need it anymore)
       for name, server in pairs(servers) do
         server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
         vim.lsp.config(name, server)
@@ -1127,21 +1140,11 @@ require('lazy').setup({
                 'lua/?/init.lua',
               },
             },
-            -- Make the server aware of Neovim runtime files
             workspace = {
               checkThirdParty = false,
               -- NOTE: this is a lot slower and will cause issues when working on your own configuration.
-              -- See https://github.com/neovim/nvim-lspconfig/issues/3189
+              --  See https://github.com/neovim/nvim-lspconfig/issues/3189
               library = vim.api.nvim_get_runtime_file('', true),
-              --
-              -- Alternatively:
-              -- library = {
-              --   vim.env.VIMRUNTIME,
-              --   -- Depending on the usage, you might want to add additional paths
-              --   -- here.
-              --   -- '${3rd}/luv/library',
-              --   -- '${3rd}/busted/library',
-              -- },
             },
           })
         end,
@@ -1149,7 +1152,12 @@ require('lazy').setup({
           Lua = {},
         },
       })
+<<<<<<< HEAD
 >>>>>>> 0c17d32 (maybe: seeing if we can get away without lazydev and just doing simpler setup)
+||||||| parent of ad246eb (fix: remove mason-lspconfig, we do not need it anymore)
+=======
+      vim.lsp.enable 'lua_ls'
+>>>>>>> ad246eb (fix: remove mason-lspconfig, we do not need it anymore)
     end,
   },
 

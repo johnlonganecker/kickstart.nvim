@@ -277,9 +277,9 @@ require('lazy').setup({
     },
   },
 
-  { 'tpope/vim-dadbod', opts = {} },
-  { 'kristijanhusak/vim-dadbod-completion', opts = {}, config = function() end },
-  { 'kristijanhusak/vim-dadbod-ui', opts = {} },
+  -- { 'tpope/vim-dadbod', opts = {} },
+  -- { 'kristijanhusak/vim-dadbod-completion', opts = {}, config = function() end },
+  -- { 'kristijanhusak/vim-dadbod-ui', opts = {} },
 
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
@@ -415,6 +415,15 @@ require('lazy').setup({
         --   },
         -- },
         -- pickers = {}
+        defaults = {
+          vimgrep_arguments = {
+            'ack',
+            '--nocolor',
+            '--nogroup',
+            '--column',
+            '--smart-case',
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
@@ -446,7 +455,7 @@ require('lazy').setup({
         local val = table.concat(Get_selection())
         print(val)
         builtin.live_grep {
-          prompt_title = 'Live Grep in Open Files',
+          prompt_title = 'Search Using Visual Selection',
           default_text = table.concat(Get_selection()),
         }
       end, { desc = '[v]isual search' })
@@ -885,7 +894,7 @@ require('lazy').setup({
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
-          { name = 'vim-dadbod-completion' },
+          -- { name = 'vim-dadbod-completion' },
           -- { name = 'buffers' },
         },
       }
@@ -997,10 +1006,10 @@ require('lazy').setup({
   require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
   require 'kickstart.plugins.smear-cursor',
-  require 'kickstart.plugins.dadbod-ui',
+  -- require 'kickstart.plugins.dadbod-ui',
   require 'kickstart.plugins.flash',
   require 'kickstart.plugins.obsidian',
-  require 'kickstart.plugins.avante',
+  -- require 'kickstart.plugins.avante',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.

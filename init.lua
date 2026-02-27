@@ -835,12 +835,18 @@ require('lazy').setup({
 =======
       { 'mason-org/mason.nvim', opts = {} },
 <<<<<<< HEAD
+<<<<<<< HEAD
       'mason-org/mason-lspconfig.nvim',
 >>>>>>> 76cb865 (Change to Mason's new address (#1516))
 ||||||| parent of e79572c (fix: continue cleaning up docs and config)
       'mason-org/mason-lspconfig.nvim',
 =======
 >>>>>>> e79572c (fix: continue cleaning up docs and config)
+||||||| parent of 1ba1789 (Re-add mason-lspconfig)
+=======
+      -- Maps LSP server names between nvim-lspconfig and Mason package names.
+      'mason-org/mason-lspconfig.nvim',
+>>>>>>> 1ba1789 (Re-add mason-lspconfig)
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
       -- Useful status updates for LSP.

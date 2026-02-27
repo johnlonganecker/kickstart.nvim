@@ -553,8 +553,15 @@ require('lazy').setup({
         { '<leader>s', group = '[S]earch', mode = { 'n', 'v' } },
 >>>>>>> 8c6b78c (feat(grep-string): works with visual selection too (#1605))
         { '<leader>t', group = '[T]oggle' },
+<<<<<<< HEAD
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } }, -- Enable gitsigns recommended keymaps first
         { 'gr', group = 'LSP Actions', mode = { 'n' } },
+||||||| parent of 80b1ee1 (Add 'gr' group to which-keys)
+        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+=======
+        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { 'gr', group = 'LSP Actions', mode = { 'n' } },
+>>>>>>> 80b1ee1 (Add 'gr' group to which-keys)
       },
     },
   },

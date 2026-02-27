@@ -1921,6 +1921,7 @@ require('lazy').setup({
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
 <<<<<<< HEAD
+<<<<<<< HEAD
     lazy = false,
     build = ':TSUpdate',
 <<<<<<< HEAD
@@ -2044,12 +2045,24 @@ require('lazy').setup({
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 =======
+||||||| parent of a6dcf68 (Attach treesitter using language name instead of filetype)
+=======
+    lazy = false,
+    build = ':TSUpdate',
+    branch = 'main',
+>>>>>>> a6dcf68 (Attach treesitter using language name instead of filetype)
     config = function()
-      local filetypes = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
-      require('nvim-treesitter').install(filetypes)
+      local parsers = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
+      require('nvim-treesitter').install(parsers)
       vim.api.nvim_create_autocmd('FileType', {
-        pattern = filetypes,
-        callback = function() vim.treesitter.start() end,
+        callback = function(args)
+          local buf, filetype = args.buf, args.match
+
+          local language = vim.treesitter.language.get_lang(filetype)
+          if not vim.tbl_contains(parsers, language) then return end
+
+          vim.treesitter.start()
+        end,
       })
     end,
 >>>>>>> 7ea937d (fix: as far as i can tell i updated to the right tree sitter stuff)

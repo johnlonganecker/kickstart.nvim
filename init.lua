@@ -150,6 +150,7 @@ vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
 vim.o.breakindent = true
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 -- Enable undo/redo changes even after closing and reopening a file
 vim.o.undofile = false
 ||||||| parent of c92ea7c (Replace vim.opt with vim.o (#1495))
@@ -157,6 +158,11 @@ vim.o.undofile = false
 vim.opt.undofile = true
 =======
 -- Save undo history
+||||||| parent of 86f1ba2 (Improve undofile comment)
+-- Save undo history
+=======
+-- Enable undo/redo changes even after closing and reopening a file
+>>>>>>> 86f1ba2 (Improve undofile comment)
 vim.o.undofile = true
 >>>>>>> c92ea7c (Replace vim.opt with vim.o (#1495))
 

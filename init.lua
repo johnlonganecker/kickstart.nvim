@@ -560,12 +560,18 @@ require('lazy').setup({
 >>>>>>> 8c6b78c (feat(grep-string): works with visual selection too (#1605))
         { '<leader>t', group = '[T]oggle' },
 <<<<<<< HEAD
+<<<<<<< HEAD
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } }, -- Enable gitsigns recommended keymaps first
         { 'gr', group = 'LSP Actions', mode = { 'n' } },
 ||||||| parent of 80b1ee1 (Add 'gr' group to which-keys)
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
 =======
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+||||||| parent of 886f2bc (Clarify gitsigns keymap for which-key)
+        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+=======
+        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } }, -- Enable gitsigns recommended keymaps first
+>>>>>>> 886f2bc (Clarify gitsigns keymap for which-key)
         { 'gr', group = 'LSP Actions', mode = { 'n' } },
 >>>>>>> 80b1ee1 (Add 'gr' group to which-keys)
       },
@@ -2112,6 +2118,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
+<<<<<<< HEAD
   require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
   require 'kickstart.plugins.smear-cursor',
@@ -2119,6 +2126,13 @@ require('lazy').setup({
   require 'kickstart.plugins.flash',
   require 'kickstart.plugins.obsidian',
   -- require 'kickstart.plugins.avante',
+||||||| parent of 886f2bc (Clarify gitsigns keymap for which-key)
+  -- require 'kickstart.plugins.neo-tree',
+  -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+=======
+  -- require 'kickstart.plugins.neo-tree',
+  -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommended keymaps
+>>>>>>> 886f2bc (Clarify gitsigns keymap for which-key)
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.

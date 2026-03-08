@@ -890,6 +890,7 @@ require('lazy').setup({
       -- Useful status updates for LSP.
       { 'j-hui/fidget.nvim', opts = {} },
 <<<<<<< HEAD
+<<<<<<< HEAD
 ||||||| parent of d350db2 (feat: switch nvim-cmp for blink.cmp (#1426))
 
       -- Allows extra capabilities provided by nvim-cmp
@@ -899,6 +900,12 @@ require('lazy').setup({
       -- Allows extra capabilities provided by blink.cmp
       'saghen/blink.cmp',
 >>>>>>> d350db2 (feat: switch nvim-cmp for blink.cmp (#1426))
+||||||| parent of d97de4f (Remove blink from nvim-lspconfig dependencies)
+
+      -- Allows extra capabilities provided by blink.cmp
+      'saghen/blink.cmp',
+=======
+>>>>>>> d97de4f (Remove blink from nvim-lspconfig dependencies)
     },
     config = function()
       -- Brief aside: **What is LSP?**

@@ -1319,6 +1319,8 @@ require('lazy').setup({
         -- Special Lua Config, as recommended by neovim help docs
         lua_ls = {
           on_init = function(client)
+            client.server_capabilities.documentFormattingProvider = false -- Disable formatting (formatting is done by stylua)
+
             if client.workspace_folders then
               local path = client.workspace_folders[1].name
               if path ~= vim.fn.stdpath 'config' and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc')) then return end
@@ -1340,8 +1342,11 @@ require('lazy').setup({
               },
             })
           end,
+          ---@type lspconfig.settings.lua_ls
           settings = {
-            Lua = {},
+            Lua = {
+              format = { enable = false }, -- Disable formatting (formatting is done by stylua)
+            },
           },
         },
 >>>>>>> b9f3965 (Clean up the lua_ls config)
@@ -1495,6 +1500,7 @@ require('lazy').setup({
       {
         '<leader>f',
 <<<<<<< HEAD
+<<<<<<< HEAD
         function() require('conform').format { async = true } end,
 ||||||| parent of 7e54a4c (fix: trimming down config and updating stylua)
         function()
@@ -1503,6 +1509,11 @@ require('lazy').setup({
 =======
         function() require('conform').format { async = true, lsp_format = 'fallback' } end,
 >>>>>>> 7e54a4c (fix: trimming down config and updating stylua)
+||||||| parent of 459b868 (Use stylua as an lsp formatter instead of an external formatter)
+        function() require('conform').format { async = true, lsp_format = 'fallback' } end,
+=======
+        function() require('conform').format { async = true } end,
+>>>>>>> 459b868 (Use stylua as an lsp formatter instead of an external formatter)
         mode = '',
         desc = '[F]ormat buffer',
       },
@@ -1546,10 +1557,7 @@ require('lazy').setup({
         if disable_filetypes[vim.bo[bufnr].filetype] then
           return nil
         else
-          return {
-            timeout_ms = 500,
-            lsp_format = 'fallback',
-          }
+          return { timeout_ms = 500 }
         end
 >>>>>>> 5e2d7e1 (changed Conform's format_on_save lambda so that buffers that match disable_filetypes return nil. This allows you to enable a formatter for langages in the disable_filetypes table to have a formatter that can be run manually with Leader-f but doesnt enable format_on_save for them (#1395))
       end,
@@ -1558,9 +1566,15 @@ require('lazy').setup({
       },
       -- You can also specify external formatters in here.
       formatters_by_ft = {
+<<<<<<< HEAD
         -- rust = { 'rustfmt' },
         lua = { 'stylua' },
         go = { 'gofmt' },
+||||||| parent of 459b868 (Use stylua as an lsp formatter instead of an external formatter)
+        lua = { 'stylua' },
+=======
+        -- rust = { 'rustfmt' },
+>>>>>>> 459b868 (Use stylua as an lsp formatter instead of an external formatter)
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --

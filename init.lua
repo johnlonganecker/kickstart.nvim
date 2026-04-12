@@ -1524,6 +1524,7 @@ require('lazy').setup({
       notify_on_error = false,
       format_on_save = function(bufnr)
 <<<<<<< HEAD
+<<<<<<< HEAD
         -- You can specify filetypes to autoformat on save here:
         local enabled_filetypes = {
           -- lua = true,
@@ -1557,7 +1558,25 @@ require('lazy').setup({
         if disable_filetypes[vim.bo[bufnr].filetype] then
           return nil
         else
+||||||| parent of ce353a9 (Change format_on_save to a whitelist instead of a blacklist)
+        -- Disable "format_on_save lsp_fallback" for languages that don't
+        -- have a well standardized coding style. You can add additional
+        -- languages here or re-enable it for the disabled ones.
+        local disable_filetypes = { c = true, cpp = true }
+        if disable_filetypes[vim.bo[bufnr].filetype] then
+          return nil
+        else
+=======
+        -- You can specify filetypes to autoformat on save here:
+        local enabled_filetypes = {
+          -- lua = true,
+          -- python = true,
+        }
+        if enabled_filetypes[vim.bo[bufnr].filetype] then
+>>>>>>> ce353a9 (Change format_on_save to a whitelist instead of a blacklist)
           return { timeout_ms = 500 }
+        else
+          return nil
         end
 >>>>>>> 5e2d7e1 (changed Conform's format_on_save lambda so that buffers that match disable_filetypes return nil. This allows you to enable a formatter for langages in the disable_filetypes table to have a formatter that can be run manually with Leader-f but doesnt enable format_on_save for them (#1395))
       end,

@@ -116,11 +116,11 @@ vim.o.conceallevel = 1
 -- vim.o.relativenumber = true
 >>>>>>> c92ea7c (Replace vim.opt with vim.o (#1495))
 
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4 -- Always 4 (see :h tabstop)
-vim.opt.softtabstop = 4
+vim.o.shiftwidth = 4
+vim.o.tabstop = 4 -- Always 4 (see :h tabstop)
+vim.o.softtabstop = 4
 
-vim.opt.conceallevel = 1
+vim.o.conceallevel = 1
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
@@ -158,6 +158,7 @@ vim.o.breakindent = true
 <<<<<<< HEAD
 <<<<<<< HEAD
 -- Enable undo/redo changes even after closing and reopening a file
+<<<<<<< HEAD
 vim.o.undofile = false
 ||||||| parent of c92ea7c (Replace vim.opt with vim.o (#1495))
 -- Save undo history
@@ -171,6 +172,11 @@ vim.opt.undofile = true
 >>>>>>> 86f1ba2 (Improve undofile comment)
 vim.o.undofile = true
 >>>>>>> c92ea7c (Replace vim.opt with vim.o (#1495))
+||||||| parent of 2b1af5e (trying to sync to latest)
+vim.o.undofile = true
+=======
+vim.o.undofile = false
+>>>>>>> 2b1af5e (trying to sync to latest)
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.o.ignorecase = true
@@ -373,7 +379,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- vim.api.nvim_create_autocmd('FileType', {
 --   pattern = { 'dbout' },
 --   callback = function()
---     vim.opt.foldmethod = 'nofoldenable'
+--     vim.o.foldmethod = 'nofoldenable'
 --   end,
 --   group = generalSettingsGroup,
 -- })
@@ -389,6 +395,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   if vim.v.shell_error ~= 0 then error('Error cloning lazy.nvim:\n' .. out) end
 end
 
+<<<<<<< HEAD
 ---@type vim.Option
 local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
@@ -416,6 +423,13 @@ local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 >>>>>>> c92ea7c (Replace vim.opt with vim.o (#1495))
 
+||||||| parent of 2b1af5e (trying to sync to latest)
+---@type vim.Option
+local rtp = vim.opt.rtp
+rtp:prepend(lazypath)
+
+=======
+>>>>>>> 2b1af5e (trying to sync to latest)
 -- [[ Configure and install plugins ]]
 --
 --  To check the current status of your plugins, run
@@ -569,6 +583,7 @@ require('lazy').setup({
       -- delay between pressing a key and opening which-key (milliseconds)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ||||||| parent of c92ea7c (Replace vim.opt with vim.o (#1495))
       -- this setting is independent of vim.opt.timeoutlen
 =======
@@ -578,6 +593,10 @@ require('lazy').setup({
       -- this setting is independent of vim.o.timeoutlen
 =======
 >>>>>>> 7e54a4c (fix: trimming down config and updating stylua)
+||||||| parent of 2b1af5e (trying to sync to latest)
+=======
+      -- this setting is independent of vim.o.timeoutlen
+>>>>>>> 2b1af5e (trying to sync to latest)
       delay = 0,
       icons = { mappings = vim.g.have_nerd_font },
 
@@ -2613,8 +2632,14 @@ require('lazy').setup({
   -- Or use telescope!
   -- In normal mode type `<space>sh` then write `lazy.nvim-plugin`
   -- you can continue same window with `<space>sr` which resumes last telescope search
+<<<<<<< HEAD
 }, {
 >>>>>>> 80273dc (added some customizations)
+||||||| parent of 2b1af5e (trying to sync to latest)
+}, {
+=======
+}, { ---@diagnostic disable-line: missing-fields
+>>>>>>> 2b1af5e (trying to sync to latest)
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
     -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table

@@ -324,9 +324,6 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
-vim.keymap.set('n', ',nt', '<Cmd>Neotree toggle<CR>', { desc = 'Toggle Neotree pane' })
-vim.keymap.set('n', '<leader>en', vim.diagnostic.goto_next, { desc = '[e]rror [n]ext' })
-vim.keymap.set('n', '<leader>ep', vim.diagnostic.goto_prev, { desc = '[e]rror [p]revious' })
 
 <<<<<<< HEAD
 ||||||| parent of e947649 (feat(keymap): move windows without `<C-w>` (#1368))
@@ -807,6 +804,7 @@ require('lazy').setup({
         end,
       })
 
+<<<<<<< HEAD
       vim.keymap.set('v', '<leader>v', function()
         local val = table.concat(Get_selection())
         print(val)
@@ -827,6 +825,18 @@ require('lazy').setup({
         }
       end, { desc = '[v]isual search' })
 
+||||||| parent of 07dcf14 (clean up a bit)
+      vim.keymap.set('v', '<leader>v', function()
+        local val = table.concat(Get_selection())
+        print(val)
+        builtin.live_grep {
+          prompt_title = 'Search Using Visual Selection',
+          default_text = table.concat(Get_selection()),
+        }
+      end, { desc = '[v]isual search' })
+
+=======
+>>>>>>> 07dcf14 (clean up a bit)
       -- Override default behavior and theme when searching
 ||||||| parent of e87b728 (feat: move Telescope config to be contained by plugin (#1843))
       -- Slightly advanced example of overriding default behavior and theme
@@ -2350,8 +2360,6 @@ require('lazy').setup({
       require('mini.indentscope').setup { delay = 100 }
       require('mini.trailspace').setup()
 
-      vim.keymap.set('n', '<leader>rw', MiniTrailspace.trim, { desc = '[r]emove [w]hitespace' })
-
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
       --  and try some other statusline plugin
@@ -2711,6 +2719,7 @@ require('lazy').setup({
 -- vim: ts=2 sts=2 sw=2 et
 <<<<<<< HEAD
 
+<<<<<<< HEAD
 -- UGLY STUFF
 
 -- Escape all Lua pattern magic characters
@@ -2921,3 +2930,105 @@ end
 
 vim.keymap.set('n', '<Leader>cp', ":let @+=expand('%:p')<CR>", { noremap = true, silent = true })
 >>>>>>> c85c713 (new stuff)
+||||||| parent of 07dcf14 (clean up a bit)
+-- UGLY STUFF
+
+-- Escape all Lua pattern magic characters
+local function escape_pattern(text)
+  return text:gsub('([^%w])', '%%%1')
+end
+
+function GotoGithubFileRange()
+  local current_full_path = vim.fn.expand '%'
+  local repo_top_level = vim.fn.system('git rev-parse --show-toplevel'):gsub('\n', '')
+  print(repo_top_level)
+  print(current_full_path)
+
+  --local escaped_repo_top_level = repo_top_level:gsub('^([%^%$%(%)%.%[%]%*%+%-%?])', '%%%1')
+  local escaped_repo_top_level = escape_pattern(repo_top_level)
+
+  local cmd = 'gh browse ' .. current_full_path:gsub(escaped_repo_top_level, '') .. ':' .. vim.fn.line "'<" .. '-' .. vim.fn.line "'>"
+  print(cmd)
+
+  vim.fn.system(cmd)
+end
+
+vim.keymap.set('v', '<leader>gg', GotoGithubFileRange, { desc = '[g]ithub [g]o', noremap = true, silent = true })
+
+function GotoGithubFile()
+  local current_full_path = vim.fn.expand '%'
+  local repo_top_level = vim.fn.system('git rev-parse --show-toplevel'):gsub('\n', '')
+  print(repo_top_level)
+
+  -- local escaped_repo_top_level = repo_top_level:gsub('^([%^%$%(%)%.%[%]%*%+%-%?])', '%%%1')
+  local escaped_repo_top_level = escape_pattern(repo_top_level)
+
+  local line_number = vim.api.nvim_win_get_cursor(0)[1]
+
+  local cmd = 'gh browse ' .. current_full_path:gsub(escaped_repo_top_level, '') .. ':' .. line_number
+  print(cmd)
+
+  vim.fn.system(cmd)
+end
+vim.keymap.set('n', '<leader>gg', GotoGithubFile, { desc = '[g]ithub [g]o', noremap = true, silent = true })
+
+function OpenDiffWithGitPath()
+  -- Get the current file's relative path in the git repository
+  local relative_path = vim.fn.system('git rev-parse --show-prefix'):gsub('\n', '')
+
+  -- Define the base path (update this path as per your needs)
+  local oy_path = vim.fn.expand '$HOME' .. '/projects/dc/oy-deployment-configuration'
+
+  -- TODO: create a map to default to IE an override if oy's path is different from ours
+  -- local mapping = {['us-path'] = "oy-path"}
+  local mappings = {
+    ['aws_gs/gsc/iceye_auth/gateway_connection_service/production/'] = 'aws_gs/gsc/iceye_auth/gateway-connection-service/production/',
+    ['aws_gs/gsc/iceye_auth/gateway_connection_service/module/'] = 'aws_gs/gsc/iceye_auth/gateway-connection-service/module/',
+  }
+
+  if mappings[relative_path] then
+    relative_path = mappings[relative_path]
+    print 'found mapping using that'
+  end
+  local target_file = oy_path .. '/' .. relative_path .. vim.fn.expand '%:t'
+
+  -- Open the current file in a diff split with the file from the target path
+  vim.cmd('vert diffsplit ' .. target_file)
+end
+
+-- Map the function to a keybinding (e.g., <leader>d)
+-- TODO: create a way to do :vsplit <oy-file>
+vim.keymap.set('n', '<leader>doy', OpenDiffWithGitPath, { noremap = true, silent = true })
+
+-- vim.keymap.set('n', '<leader>gg', ':lua GotoGithubFile()<CR>', { desc = '[g]ithub [g]o', noremap = true, silent = true })
+
+-- function GotoGithubPR()
+--   -- Get the blame information for that line
+--   gitsigns.blame_line({ num = line, full = true }, function(blame)
+--     if blame then
+--       -- Yank the commit hash to the clipboard
+--       vim.fn.setreg('+', blame.commit)
+--       print('Commit hash yanked: ' .. blame.commit)
+--     else
+--       print 'No blame information found.'
+--     end
+--   end)
+-- end
+--
+-- vim.keymap.set('n', '<leader>cpn', ':lua GotoGithubPR()<CR>', { desc = '[c]opy [p]ull request [n]umber', noremap = true, silent = true })
+
+function GotoGithubPR()
+  local pr_num = vim.fn.expand '<cword>'
+  vim.fn.system('gh browse ' .. pr_num)
+end
+
+vim.keymap.set('n', '<leader>gtp', GotoGithubPR, { desc = '[g]o [t]o [p]ull request' })
+
+function Get_selection()
+  return vim.fn.getregion(vim.fn.getpos '.', vim.fn.getpos 'v', { mode = vim.fn.mode() })
+end
+
+vim.keymap.set('n', '<Leader>cp', ":let @+=expand('%:p')<CR>", { noremap = true, silent = true })
+=======
+require('keymaps')
+>>>>>>> 07dcf14 (clean up a bit)

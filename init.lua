@@ -584,6 +584,7 @@ require('lazy').setup({
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ||||||| parent of c92ea7c (Replace vim.opt with vim.o (#1495))
       -- this setting is independent of vim.opt.timeoutlen
 =======
@@ -597,6 +598,10 @@ require('lazy').setup({
 =======
       -- this setting is independent of vim.o.timeoutlen
 >>>>>>> 2b1af5e (trying to sync to latest)
+||||||| parent of 84891ad (more syncing)
+      -- this setting is independent of vim.o.timeoutlen
+=======
+>>>>>>> 84891ad (more syncing)
       delay = 0,
       icons = { mappings = vim.g.have_nerd_font },
 
@@ -771,6 +776,7 @@ require('lazy').setup({
         group = vim.api.nvim_create_augroup('telescope-lsp-attach', { clear = true }),
         callback = function(event)
           local buf = event.buf
+
           -- Find references for the word under your cursor.
           vim.keymap.set('n', 'grr', builtin.lsp_references, { buffer = buf, desc = '[G]oto [R]eferences' })
 
@@ -782,6 +788,9 @@ require('lazy').setup({
           -- This is where a variable was first declared, or where a function is defined, etc.
           -- To jump back, press <C-t>.
           vim.keymap.set('n', 'grd', builtin.lsp_definitions, { buffer = buf, desc = '[G]oto [D]efinition' })
+
+          -- Function to search the selected text in Telescope live_grep
+          -- from https://github.com/nvim-telescope/telescope.nvim/issues/2988
 
           -- Fuzzy find all the symbols in your current document.
           -- Symbols are things like variables, functions, types, etc.
@@ -797,14 +806,6 @@ require('lazy').setup({
           vim.keymap.set('n', 'grt', builtin.lsp_type_definitions, { buffer = buf, desc = '[G]oto [T]ype Definition' })
         end,
       })
-||||||| parent of f5288f2 (new stuff)
-      vim.keymap.set('v', '<leader>v', function()
-        builtin.live_grep {
-          prompt_title = 'Live Grep in Open Files',
-          default_text = table.concat(get_selection()),
-        }
-      end, { desc = '[v]isual search' })
-=======
       vim.keymap.set('v', '<leader>v', function()
         local val = table.concat(Get_selection())
         print(val)
@@ -813,8 +814,8 @@ require('lazy').setup({
           default_text = table.concat(Get_selection()),
         }
       end, { desc = '[v]isual search' })
->>>>>>> f5288f2 (new stuff)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
       vim.keymap.set('v', '<leader>v', function()
         local val = table.concat(Get_selection())
@@ -875,6 +876,10 @@ require('lazy').setup({
       -- Override default behavior and theme when searching
 =======
 >>>>>>> 2e69e99 (add in new features)
+||||||| parent of 84891ad (more syncing)
+=======
+      -- Override default behavior and theme when searching
+>>>>>>> 84891ad (more syncing)
       vim.keymap.set('n', '<leader>/', function()
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
         builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
@@ -1313,10 +1318,18 @@ require('lazy').setup({
 =======
 >>>>>>> 1f4c21f (Don't extend lsp capabilities because blink does it internally)
       -- Enable the following language servers
+<<<<<<< HEAD
       --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
 <<<<<<< HEAD
       --  See `:help lsp-config` for information about keys and how to configure
 <<<<<<< HEAD
+||||||| parent of 84891ad (more syncing)
+      --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
+      --  See `:help lsp-config` for information about keys and how to configure
+=======
+      -- Feel free to add/remove any LSPs that you want here. They will automatically be installed.
+      -- See `:help lsp-config` for information about keys and how to configure
+>>>>>>> 84891ad (more syncing)
       ---@type table<string, vim.lsp.Config>
 ||||||| parent of e79572c (fix: continue cleaning up docs and config)
       --
@@ -1428,8 +1441,13 @@ require('lazy').setup({
         -- ts_ls = {},
 =======
         ts_ls = {},
+<<<<<<< HEAD
         --
 >>>>>>> c85c713 (new stuff)
+||||||| parent of 84891ad (more syncing)
+        --
+=======
+>>>>>>> 84891ad (more syncing)
 
         stylua = {}, -- Used to format Lua code
         --

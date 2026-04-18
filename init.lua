@@ -103,6 +103,7 @@ vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
 <<<<<<< HEAD
+<<<<<<< HEAD
 vim.o.relativenumber = true
 
 vim.o.shiftwidth = 4
@@ -115,6 +116,11 @@ vim.o.conceallevel = 1
 =======
 -- vim.o.relativenumber = true
 >>>>>>> c92ea7c (Replace vim.opt with vim.o (#1495))
+||||||| parent of c0f6dd1 (more syncing)
+-- vim.o.relativenumber = true
+=======
+vim.o.relativenumber = true
+>>>>>>> c0f6dd1 (more syncing)
 
 vim.o.shiftwidth = 4
 vim.o.tabstop = 4 -- Always 4 (see :h tabstop)
@@ -373,17 +379,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 >>>>>>> 7e54a4c (fix: trimming down config and updating stylua)
 })
 
--- https://stackoverflow.com/questions/75463635/migrating-filetype-autocmd-setting-from-vimscript-to-lua
--- local generalSettingsGroup = vim.api.nvim_create_augroup('General settings', { clear = true })
---
--- vim.api.nvim_create_autocmd('FileType', {
---   pattern = { 'dbout' },
---   callback = function()
---     vim.o.foldmethod = 'nofoldenable'
---   end,
---   group = generalSettingsGroup,
--- })
-
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -395,6 +390,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   if vim.v.shell_error ~= 0 then error('Error cloning lazy.nvim:\n' .. out) end
 end
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 ---@type vim.Option
 local rtp = vim.opt.rtp
@@ -430,6 +426,13 @@ rtp:prepend(lazypath)
 
 =======
 >>>>>>> 2b1af5e (trying to sync to latest)
+||||||| parent of c0f6dd1 (more syncing)
+=======
+---@type vim.Option
+local rtp = vim.opt.rtp
+rtp:prepend(lazypath)
+
+>>>>>>> c0f6dd1 (more syncing)
 -- [[ Configure and install plugins ]]
 --
 --  To check the current status of your plugins, run
@@ -789,9 +792,6 @@ require('lazy').setup({
           -- To jump back, press <C-t>.
           vim.keymap.set('n', 'grd', builtin.lsp_definitions, { buffer = buf, desc = '[G]oto [D]efinition' })
 
-          -- Function to search the selected text in Telescope live_grep
-          -- from https://github.com/nvim-telescope/telescope.nvim/issues/2988
-
           -- Fuzzy find all the symbols in your current document.
           -- Symbols are things like variables, functions, types, etc.
           vim.keymap.set('n', 'gO', builtin.lsp_document_symbols, { buffer = buf, desc = 'Open Document Symbols' })
@@ -806,6 +806,7 @@ require('lazy').setup({
           vim.keymap.set('n', 'grt', builtin.lsp_type_definitions, { buffer = buf, desc = '[G]oto [T]ype Definition' })
         end,
       })
+
       vim.keymap.set('v', '<leader>v', function()
         local val = table.concat(Get_selection())
         print(val)
@@ -909,6 +910,7 @@ require('lazy').setup({
 
   -- LSP Plugins
 <<<<<<< HEAD
+<<<<<<< HEAD
   -- {
   --   -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
   --   -- used for completion, annotations and signatures of Neovim apis
@@ -921,6 +923,21 @@ require('lazy').setup({
   --     },
   --   },
   -- },
+||||||| parent of c0f6dd1 (more syncing)
+=======
+  -- {
+  --   -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
+  --   -- used for completion, annotations and signatures of Neovim apis
+  --   'folke/lazydev.nvim',
+  --   ft = 'lua',
+  --   opts = {
+  --     library = {
+  --       -- Load luvit types when the `vim.uv` word is found
+  --       { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+  --     },
+  --   },
+  -- },
+>>>>>>> c0f6dd1 (more syncing)
   {
 ||||||| parent of 0c17d32 (maybe: seeing if we can get away without lazydev and just doing simpler setup)
   {
@@ -1319,6 +1336,7 @@ require('lazy').setup({
 >>>>>>> 1f4c21f (Don't extend lsp capabilities because blink does it internally)
       -- Enable the following language servers
 <<<<<<< HEAD
+<<<<<<< HEAD
       --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
 <<<<<<< HEAD
       --  See `:help lsp-config` for information about keys and how to configure
@@ -1330,6 +1348,13 @@ require('lazy').setup({
       -- Feel free to add/remove any LSPs that you want here. They will automatically be installed.
       -- See `:help lsp-config` for information about keys and how to configure
 >>>>>>> 84891ad (more syncing)
+||||||| parent of c0f6dd1 (more syncing)
+      -- Feel free to add/remove any LSPs that you want here. They will automatically be installed.
+      -- See `:help lsp-config` for information about keys and how to configure
+=======
+      --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
+      --  See `:help lsp-config` for information about keys and how to configure
+>>>>>>> c0f6dd1 (more syncing)
       ---@type table<string, vim.lsp.Config>
 ||||||| parent of e79572c (fix: continue cleaning up docs and config)
       --
@@ -1581,8 +1606,13 @@ require('lazy').setup({
 >>>>>>> b9f3965 (Clean up the lua_ls config)
         -- You can add other tools here that you want Mason to install
 <<<<<<< HEAD
+<<<<<<< HEAD
         'stylua', -- Used to format Lua code
 <<<<<<< HEAD
+||||||| parent of c0f6dd1 (more syncing)
+=======
+        'stylua', -- Used to format Lua code
+>>>>>>> c0f6dd1 (more syncing)
         'templ', -- Used to work with html templates
         'terraform-ls',
 ||||||| parent of ad246eb (fix: remove mason-lspconfig, we do not need it anymore)
@@ -1895,14 +1925,7 @@ require('lazy').setup({
       },
     },
   },
-  {
-    'L3MON4D3/LuaSnip',
-    version = 'v2.*', -- Optional: Pin to stable version
-    build = 'make install_jsregexp', -- Optional, for regex snippets
-    config = function()
-      require('luasnip.loaders.from_lua').lazy_load { paths = { '~/.config/nvim/snippets' } }
-    end,
-  },
+
   { -- Autocompletion
     'saghen/blink.cmp',
     event = 'VimEnter',
@@ -2627,6 +2650,11 @@ require('lazy').setup({
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
 <<<<<<< HEAD
+<<<<<<< HEAD
+||||||| parent of c0f6dd1 (more syncing)
+  --  For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
+=======
+>>>>>>> c0f6dd1 (more syncing)
   { import = 'custom.plugins' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`

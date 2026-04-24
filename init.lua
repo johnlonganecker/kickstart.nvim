@@ -645,7 +645,19 @@ require('lazy').setup({
       local servers = {
         -- clangd = {},
         gopls = {},
-        pyright = {},
+        -- configure pyright so I don't get weird pytorch not exported function errors
+        -- The "is not exported from module torch" error in Neovim (using Pyright) usually happens because PyTorch is a py.typed library that often uses "implicit" imports, while Pyright strictly requires "explicit" exports for library interfaces
+        pyright = {
+          settings = {
+            python = {
+              analysis = {
+                diagnosticSeverityOverrides = {
+                  reportPrivateImportUsage = "none",
+                },
+              },
+            },
+          },
+        },
         -- rust_analyzer = {},
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:

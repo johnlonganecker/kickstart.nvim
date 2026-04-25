@@ -1024,7 +1024,6 @@ require('lazy').setup({
   require 'kickstart.plugins.smear-cursor',
   -- require 'kickstart.plugins.dadbod-ui',
   require 'kickstart.plugins.flash',
-  require 'kickstart.plugins.obsidian',
   -- require 'kickstart.plugins.avante',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`

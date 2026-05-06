@@ -1136,34 +1136,6 @@ function GotoGithubFile()
 end
 vim.keymap.set('n', '<leader>gg', GotoGithubFile, { desc = '[g]ithub [g]o', noremap = true, silent = true })
 
-function OpenDiffWithGitPath()
-  -- Get the current file's relative path in the git repository
-  local relative_path = vim.fn.system('git rev-parse --show-prefix'):gsub('\n', '')
-
-  -- Define the base path (update this path as per your needs)
-  local oy_path = vim.fn.expand '$HOME' .. '/projects/dc/oy-deployment-configuration'
-
-  -- TODO: create a map to default to IE an override if oy's path is different from ours
-  -- local mapping = {['us-path'] = "oy-path"}
-  local mappings = {
-    ['aws_gs/gsc/iceye_auth/gateway_connection_service/production/'] = 'aws_gs/gsc/iceye_auth/gateway-connection-service/production/',
-    ['aws_gs/gsc/iceye_auth/gateway_connection_service/module/'] = 'aws_gs/gsc/iceye_auth/gateway-connection-service/module/',
-  }
-
-  if mappings[relative_path] then
-    relative_path = mappings[relative_path]
-    print 'found mapping using that'
-  end
-  local target_file = oy_path .. '/' .. relative_path .. vim.fn.expand '%:t'
-
-  -- Open the current file in a diff split with the file from the target path
-  vim.cmd('vert diffsplit ' .. target_file)
-end
-
--- Map the function to a keybinding (e.g., <leader>d)
--- TODO: create a way to do :vsplit <oy-file>
-vim.keymap.set('n', '<leader>doy', OpenDiffWithGitPath, { noremap = true, silent = true })
-
 -- vim.keymap.set('n', '<leader>gg', ':lua GotoGithubFile()<CR>', { desc = '[g]ithub [g]o', noremap = true, silent = true })
 
 -- function GotoGithubPR()

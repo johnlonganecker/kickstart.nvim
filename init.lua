@@ -90,6 +90,25 @@ P.S. You can delete this when you're done too. It's your config now! :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+vim.keymap.set("n", "<space><space>x", "<cmd>source %<CR>")
+vim.keymap.set("n", "<space>x", ":.lua<CR>")
+vim.keymap.set("v", "<space>x", ":lua<CR>")
+
+-- local dls = vim.lsp.config.dockerls
+-- function printTable(t, indent)
+--     indent = indent or 0
+--     for k, v in pairs(t) do
+--         local formatting = string.rep("  ", indent) .. k .. ": "
+--         if type(v) == "table" then
+--             print(formatting)
+--             printTable(v, indent + 1)
+--         else
+--             print(formatting .. tostring(v))
+--         end
+--     end
+-- end
+-- printTable(dls)
+
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
@@ -414,6 +433,7 @@ require('lazy').setup({
             '--nogroup',
             '--column',
             '--smart-case',
+            '--ignore-dir=.terraform',
           },
         },
         extensions = {
@@ -664,10 +684,23 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        ts_ls = {},
+        -- ts_ls = {},
 
         stylua = {}, -- Used to format Lua code
         --
+
+        dockerls = {
+          -- settings = {
+          --   docker = {
+          --     languageserver = {
+          --       formatter = {
+          --         ignoreMultilineInstructions = true,
+          --       },
+          --     },
+          --   }
+          -- },
+          filetypes = { "dockerfile", "Containerfile" }
+        },
 
         -- Special Lua Config, as recommended by neovim help docs
         lua_ls = {
@@ -1025,6 +1058,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.dadbod-ui',
   require 'kickstart.plugins.flash',
   -- require 'kickstart.plugins.avante',
+  require 'custom.filetypes',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.

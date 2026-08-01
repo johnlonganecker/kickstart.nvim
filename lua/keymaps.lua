@@ -97,3 +97,4 @@ end
 -- TODO: create a way to do :vsplit <oy-file>
 vim.keymap.set('n', '<leader>doy', OpenDiffWithGitPath, { noremap = true, silent = true })
 
+vim.keymap.set("v", "<leader>jq", ":!jq .<CR>", { desc = "Format JSON with jq" })

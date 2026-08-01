@@ -689,6 +689,10 @@ require('lazy').setup({
         stylua = {}, -- Used to format Lua code
         --
 
+        julials = {},
+
+        ["r-languageserver"] = {},
+
         dockerls = {
           -- settings = {
           --   docker = {
@@ -737,6 +741,7 @@ require('lazy').setup({
         },
         eslint = {},
         bashls = {},
+        yamllint = {},
       }
 
       -- Ensure the servers and tools above are installed
@@ -1056,9 +1061,12 @@ require('lazy').setup({
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
   require 'kickstart.plugins.smear-cursor',
   -- require 'kickstart.plugins.dadbod-ui',
-  require 'kickstart.plugins.flash',
+  -- require 'kickstart.plugins.flash',
   -- require 'kickstart.plugins.avante',
+  require 'custom.plugins.snacks',
   require 'custom.filetypes',
+  require 'custom.plugins.wit',
+  require 'custom.plugins.scroll-it',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
@@ -1165,3 +1173,12 @@ function Get_selection()
 end
 
 vim.keymap.set('n', '<Leader>cp', ":let @+=expand('%:p')<CR>", { noremap = true, silent = true })
+
+-- help with folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldenable = true
+vim.opt.foldlevel = 99 -- Keeps fields open by default until you collapse them
+
+vim.keymap.set("v", "<leader>jq", ":!jq .<CR>", { desc = "Format JSON with jq" })
+

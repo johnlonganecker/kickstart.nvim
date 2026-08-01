@@ -691,7 +691,7 @@ require('lazy').setup({
 
         julials = {},
 
-        ["r-languageserver"] = {},
+        -- ["r-languageserver"] = {},
 
         dockerls = {
           -- settings = {
@@ -1019,7 +1019,7 @@ require('lazy').setup({
         if has_indent_query then vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()" end
       end
 
-      local available_parsers = require('nvim-treesitter').get_available()
+      local available_parsers = require('nvim-treesitter.config').get_installed()
       vim.api.nvim_create_autocmd('FileType', {
         callback = function(args)
           local buf, filetype = args.buf, args.match
@@ -1027,7 +1027,7 @@ require('lazy').setup({
           local language = vim.treesitter.language.get_lang(filetype)
           if not language then return end
 
-          local installed_parsers = require('nvim-treesitter').get_installed 'parsers'
+          local installed_parsers = require('nvim-treesitter.config').get_installed 'parsers'
 
           if vim.tbl_contains(installed_parsers, language) then
             -- enable the parser if it is installed

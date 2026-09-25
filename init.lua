@@ -1066,7 +1066,7 @@ require('lazy').setup({
   require 'custom.plugins.snacks',
   require 'custom.filetypes',
   require 'custom.plugins.wit',
-  require 'custom.plugins.scroll-it',
+  -- require 'custom.plugins.scroll-it',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
@@ -1181,4 +1181,4 @@ vim.opt.foldenable = true
 vim.opt.foldlevel = 99 -- Keeps fields open by default until you collapse them
 
 vim.keymap.set("v", "<leader>jq", ":!jq .<CR>", { desc = "Format JSON with jq" })
-
+vim.keymap.set("v", "<leader>jo", ":!jq -c .<CR>", { desc = "Squash JSON to one line with jq" })
